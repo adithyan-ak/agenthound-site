@@ -83,35 +83,46 @@
   }
   </script>
 
-  <!-- Fonts: Geist for UI, Geist Mono for code -->
+  <!-- Fonts: Inter for UI, JetBrains Mono for code -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
-    /* ---------- Design tokens ---------- */
+    /* ---------- Design tokens — Deep Space Security Operations ---------- */
     :root {
-      /* Surfaces — three tiers, none pure black */
-      --surface-0:    #0a0a0b;
-      --surface-1:    #111114;
-      --surface-2:    #17181d;
+      /* Surfaces */
+      --surface-0:    #0d0e12;
+      --surface-1:    #1a1b20;
+      --surface-2:    #25262c;
 
-      /* Borders — deliberate, not glass */
-      --line:         #1f2026;
-      --line-strong:  #2a2b32;
+      /* Borders */
+      --line:         #2a2c33;
+      --line-strong:  #3a3d45;
 
       /* Text — four tiers tuned for dark mode */
-      --text-1:       #f5f5f7;
-      --text-2:       #c8c9cf;
-      --text-3:       #8e8f96;
-      --text-4:       #5a5b62;
+      --text-1:       #eaebee;
+      --text-2:       #c4c7cd;
+      --text-3:       #8a8f98;
+      --text-4:       #5c5f66;
 
-      /* Brand chrome — single chromatic accent (hunter amber) */
-      --accent:       #ff7a1a;
-      --accent-soft:  #ff9447;
-      --accent-tint:  rgba(255, 122, 26, 0.10);
-      --accent-line:  rgba(255, 122, 26, 0.32);
-      --accent-ink:   #1a0d00;
+      /* Brand chrome — Solar Flare Orange (CTAs, critical) */
+      --accent:       #ff7a00;
+      --accent-soft:  #ff9933;
+      --accent-tint:  rgba(255, 122, 0, 0.10);
+      --accent-line:  rgba(255, 122, 0, 0.32);
+      --accent-ink:   #1a0a00;
+
+      /* Secondary accent — Digital Cyan (active, interactive) */
+      --accent-2:       #00e0ff;
+      --accent-2-tint:  rgba(0, 224, 255, 0.10);
+      --accent-2-line:  rgba(0, 224, 255, 0.32);
+
+      /* Status */
+      --ok:               #00ff85;
+      --warn:             #ffd600;
+      --critical:         #ef4444;
+      --critical-strong:  #ff5a3c;
 
       /* Product node palette — DATA VIZ ONLY (graph, schema, modules, terminal) */
       --litellm:      #00BCD4;
@@ -124,9 +135,12 @@
       --openwebui:    #2196F3;
       --aiservice:    #7E57C2;
 
-      /* Semantic */
-      --critical:     #ef4444;
-      --high:         #f59e0b;
+      /* Glass */
+      --glass-bg:     rgba(13, 14, 18, 0.80);
+      --glass-blur:   10px;
+
+      /* Semantic legacy */
+      --high:         #ffd600;
 
       /* --- Legacy aliases so existing rules still resolve --- */
       --bg:           var(--surface-0);
@@ -139,9 +153,10 @@
       --brand-2:      var(--accent);
 
       /* Type & rhythm */
-      --font-sans:    'Geist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
-      --font-mono:    'Geist Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+      --font-sans:    'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+      --font-mono:    'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
       --radius-sm:    6px;
+      --radius-md:    8px;
       --radius:       10px;
       --radius-lg:    14px;
       --shadow-1:     0 1px 0 rgba(255,255,255,0.03) inset, 0 1px 2px rgba(0,0,0,.5);
@@ -177,7 +192,7 @@
       content: "";
       position: fixed;
       inset: 0;
-      background: radial-gradient(900px 480px at 30% -10%, rgba(255, 122, 26, 0.06), transparent 62%);
+      background: radial-gradient(900px 480px at 30% -10%, rgba(255, 122, 0, 0.05), transparent 62%);
       pointer-events: none;
       z-index: 0;
     }
@@ -238,7 +253,9 @@
       position: sticky;
       top: 0;
       z-index: 50;
-      background: var(--surface-0);
+      background: var(--glass-bg);
+      backdrop-filter: blur(var(--glass-blur));
+      -webkit-backdrop-filter: blur(var(--glass-blur));
       border-bottom: 1px solid transparent;
       transition: border-color .2s ease;
     }
@@ -281,13 +298,13 @@
       padding: 4px 0;
       transition: color .15s ease;
     }
-    .nav-links a:hover { color: var(--text-1); }
+    .nav-links a:hover { color: var(--accent-2); }
     .nav-links a::after {
       content: "";
       position: absolute;
       left: 0; right: 0; bottom: -2px;
       height: 1px;
-      background: var(--accent);
+      background: var(--accent-2);
       transform: scaleX(0);
       transform-origin: left;
       transition: transform .2s ease;
@@ -370,8 +387,8 @@
     }
     .hero-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-      gap: 64px;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+      gap: 56px;
       align-items: center;
     }
     @media (max-width: 980px) {
@@ -408,6 +425,23 @@
     }
     .hero-pill .arrow { color: var(--text-4); transition: transform .2s ease; }
     .hero-pill:hover .arrow { transform: translateX(2px); color: var(--text-2); }
+    .hero-pill .pulse {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--ok);
+      box-shadow: 0 0 0 0 rgba(0, 255, 133, 0.55);
+      animation: livePulse 2s ease-out infinite;
+      flex: 0 0 auto;
+      margin-left: 2px;
+    }
+    @keyframes livePulse {
+      0%   { box-shadow: 0 0 0 0 rgba(0, 255, 133, 0.55); }
+      70%  { box-shadow: 0 0 0 8px rgba(0, 255, 133, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(0, 255, 133, 0); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-pill .pulse, .hero-meta .ok { animation: none; }
+    }
 
     h1.hero-title {
       margin: 28px 0 22px;
@@ -416,17 +450,23 @@
       letter-spacing: -0.03em;
       font-weight: 600;
       color: var(--text-1);
-      overflow-wrap: anywhere;
-      hyphens: auto;
-      -webkit-hyphens: auto;
+      text-wrap: balance;
+      hyphens: manual;
+      -webkit-hyphens: manual;
+      overflow-wrap: normal;
+      word-break: normal;
     }
     @media (max-width: 560px) {
       h1.hero-title {
         margin: 22px 0 18px;
         line-height: 1.08;
         letter-spacing: -0.02em;
+        overflow-wrap: anywhere;
+        hyphens: auto;
+        -webkit-hyphens: auto;
       }
     }
+    h1.hero-title .nobr { white-space: nowrap; }
     h1.hero-title .grad {
       color: var(--text-3);
       font-weight: 500;
@@ -494,7 +534,7 @@
       padding: 11px 14px;
       font-family: var(--font-mono);
       font-size: 12px;
-      color: var(--accent);
+      color: var(--accent-2);
       border-right: 1px solid var(--line);
       letter-spacing: 0;
     }
@@ -540,19 +580,23 @@
     }
     .hero-meta span { display: inline-flex; align-items: center; gap: 8px; }
     .hero-meta .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--text-4); }
-    .hero-meta .ok { background: var(--accent); }
+    .hero-meta .ok {
+      background: var(--ok);
+      box-shadow: 0 0 0 0 rgba(0, 255, 133, 0.55);
+      animation: livePulse 2s ease-out infinite;
+    }
 
     /* ---------- Hero graph stage ---------- */
     .stage {
       position: relative;
       aspect-ratio: 1 / 1;
-      max-width: 560px;
+      max-width: 720px;
       margin-left: auto;
       width: 100%;
       overflow: hidden;
     }
     @media (max-width: 980px) {
-      .stage { margin: 0 auto; }
+      .stage { margin: 0 auto; max-width: 640px; }
     }
     @media (max-width: 560px) {
       .stage { aspect-ratio: 1 / 1; max-width: 100%; }
@@ -572,8 +616,10 @@
     .stage-key {
       display: flex;
       flex-wrap: wrap;
+      justify-content: center;
       gap: 4px 14px;
-      margin-top: 18px;
+      margin: 18px auto 0;
+      max-width: 560px;
       font-family: var(--font-mono);
       font-size: 10.5px;
       letter-spacing: .04em;
@@ -596,6 +642,24 @@
       height: 1px;
       margin: 0 auto 32px;
       background: var(--accent-line);
+    }
+    .trust-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin: 0 0 18px;
+    }
+    .trust-eyebrow .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--warn);
+      box-shadow: 0 0 8px rgba(255, 214, 0, 0.45);
     }
     .trust-statement {
       max-width: 880px;
@@ -670,7 +734,9 @@
       grid-column: span 2;
       border-radius: 14px;
       border: 1px solid var(--line);
-      background: var(--surface-1);
+      background: var(--glass-bg);
+      backdrop-filter: blur(var(--glass-blur));
+      -webkit-backdrop-filter: blur(var(--glass-blur));
       padding: 24px;
       overflow: hidden;
       transition: border-color .2s ease, background .2s ease;
@@ -684,7 +750,7 @@
       border-left: 1px solid var(--accent);
       transition: width .3s ease, height .3s ease;
     }
-    .bento .card:hover { border-color: var(--line-strong); background: var(--surface-2); }
+    .bento .card:hover { border-color: var(--line-strong); background: rgba(37, 38, 44, 0.85); }
     .bento .card:hover::before { width: 24px; height: 24px; }
     .bento .card.span-3 { grid-column: span 3; }
     .bento .card.span-4 { grid-column: span 4; }
@@ -734,8 +800,10 @@
       color: var(--text-3);
       background: var(--surface-2);
     }
-    .severity.crit { color: var(--critical); border-color: rgba(239,68,68,0.4); background: rgba(239,68,68,0.08); }
-    .severity.high { color: var(--accent); border-color: var(--accent-line); background: var(--accent-tint); }
+    .severity.crit { color: var(--critical-strong); border-color: rgba(255,90,60,0.45); background: rgba(255,90,60,0.10); }
+    .severity.high { color: var(--warn); border-color: rgba(255,214,0,0.40); background: rgba(255,214,0,0.10); }
+    .severity.med  { color: var(--accent); border-color: var(--accent-line); background: var(--accent-tint); }
+    .severity.low  { color: var(--ok); border-color: rgba(0,255,133,0.35); background: rgba(0,255,133,0.08); }
 
     /* ascii / diagram region inside a card */
     .card .diagram {
@@ -795,7 +863,7 @@
       position: absolute;
       left: 18px; right: 18px; bottom: -1px;
       height: 1px;
-      background: var(--accent);
+      background: var(--accent-2);
       transform: scaleX(0);
       transform-origin: left;
       transition: transform .6s cubic-bezier(.2,.7,.2,1);
@@ -815,13 +883,34 @@
       font-family: var(--font-mono);
       font-size: 10.5px;
       letter-spacing: .08em;
-      color: var(--text-4);
+      color: var(--accent);
+      opacity: .9;
     }
     .verb .ico {
-      width: 30px; height: 30px;
+      width: 34px; height: 34px;
       display: inline-flex; align-items: center; justify-content: center;
       margin-bottom: 14px;
-      color: var(--text-2);
+      color: var(--accent);
+      border: 1px solid var(--accent-line);
+      border-radius: 8px;
+      background: var(--accent-tint);
+      transition: color .15s ease, border-color .15s ease, background .15s ease;
+    }
+    /* alternate icon: cyan, for visual rhythm */
+    .verb:nth-child(2n) .ico {
+      color: var(--accent-2);
+      border-color: var(--accent-2-line);
+      background: var(--accent-2-tint);
+    }
+    .verb:hover .ico {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(255,122,0,0.15);
+    }
+    .verb:nth-child(2n):hover .ico {
+      border-color: var(--accent-2);
+      color: var(--accent-2);
+      background: rgba(0,224,255,0.15);
     }
     .verb .ico svg { width: 18px; height: 18px; }
     .verb h4 {
@@ -901,17 +990,17 @@
     .term-line { display: block; }
     .term-line.prompt::before {
       content: "$ ";
-      color: var(--brand);
+      color: var(--accent-2);
     }
     .term-line.comment { color: var(--fg-dim); }
-    .term-line .acc { color: var(--brand); }
-    .term-line .cy  { color: var(--litellm); }
-    .term-line .pk  { color: var(--qdrant); }
-    .term-line .pu  { color: var(--aiservice); }
-    .term-line .or  { color: var(--vllm); }
-    .term-line .crit{ color: var(--critical); font-weight: 600; }
-    .term-line .high{ color: var(--high); }
-    .term-line .key { color: #ffd479; }
+    .term-line .acc { color: var(--accent); }
+    .term-line .cy  { color: var(--accent-2); }
+    .term-line .pk  { color: var(--accent); }
+    .term-line .pu  { color: var(--accent); }
+    .term-line .or  { color: var(--accent); }
+    .term-line .crit{ color: var(--critical-strong); font-weight: 600; }
+    .term-line .high{ color: var(--warn); }
+    .term-line .key { color: var(--warn); }
     .term-line.indent { padding-left: 14px; color: #a0a6b1; }
     .term-line.head { color: #fff; font-weight: 600; }
     .cursor {
@@ -999,7 +1088,7 @@
       color: var(--fg-dim);
       font-family: var(--font-mono);
     }
-    .schema-foot strong { color: var(--brand); font-weight: 500; }
+    .schema-foot strong { color: var(--accent-2); font-weight: 500; }
 
     /* ---------- Modules grid ---------- */
     .modules-grid {
@@ -1009,13 +1098,26 @@
     }
     @media (max-width: 980px) { .modules-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
     @media (max-width: 560px) { .modules-grid { grid-template-columns: minmax(0, 1fr); } }
+
+    /* Mobile glass fallback — drop blur on cards in single-column layouts to protect paint perf */
+    @media (max-width: 560px) {
+      .bento .card,
+      .mod {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        background: var(--surface-1);
+      }
+      .bento .card:hover { background: var(--surface-2); }
+    }
     .mod {
       position: relative;
       padding: 16px;
       border: 1px solid var(--line);
       border-radius: 12px;
-      background: var(--bg-elev-1);
-      transition: border-color .15s ease, transform .15s ease;
+      background: var(--glass-bg);
+      backdrop-filter: blur(var(--glass-blur));
+      -webkit-backdrop-filter: blur(var(--glass-blur));
+      transition: border-color .15s ease, transform .15s ease, background .15s ease;
     }
     .mod:hover { border-color: var(--line-strong); transform: translateY(-1px); }
     .mod .head {
@@ -1048,21 +1150,34 @@
       background: var(--mod-color, var(--brand));
     }
 
-    /* module badges — neutral by default, amber for destructive verbs */
-    .badge.fp,
+    /* module badges — severity-aware ladder */
     .badge.scan,
     .badge.enum {
       color: var(--text-3);
       border-color: var(--line-strong);
       background: var(--surface-2);
     }
+    .badge.fp {
+      color: var(--accent-2);
+      border-color: var(--accent-2-line);
+      background: var(--accent-2-tint);
+    }
     .badge.loot,
-    .badge.pois,
-    .badge.impl,
     .badge.extr {
       color: var(--accent);
       border-color: var(--accent-line);
       background: var(--accent-tint);
+    }
+    .badge.pois,
+    .badge.impl {
+      color: var(--critical-strong);
+      border-color: rgba(255,90,60,0.45);
+      background: rgba(255,90,60,0.10);
+    }
+    .badge.revert {
+      color: var(--ok);
+      border-color: rgba(0,255,133,0.35);
+      background: rgba(0,255,133,0.08);
     }
 
     /* ---------- Install / quickstart ---------- */
@@ -1099,7 +1214,7 @@
       word-break: break-all;
       overflow-x: auto;
     }
-    .panel pre .acc { color: var(--accent); }
+    .panel pre .acc { color: var(--accent-2); }
     .panel pre .cmt { color: var(--text-4); }
 
     /* ---------- CTA banner ---------- */
@@ -1110,13 +1225,80 @@
       border-radius: 16px;
       border: 1px solid var(--line-strong);
       background:
-        radial-gradient(ellipse at 50% 0%, rgba(255,122,26,0.10), transparent 60%),
+        radial-gradient(ellipse at 50% 0%, rgba(255,122,0,0.10), transparent 60%),
         var(--surface-1);
       text-align: center;
       overflow: hidden;
+      isolation: isolate;
+    }
+    /* orbital ring backdrop — concentric thin bands, slowly rotating */
+    .cta-banner::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 1400px;
+      height: 1400px;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 0;
+      background:
+        /* Ring 1 — innermost, faint cyan */
+        radial-gradient(circle at 50% 50%,
+          transparent 178px,
+          rgba(0,224,255,0.10) 180px,
+          rgba(0,224,255,0.10) 181px,
+          transparent 183px),
+        /* Ring 2 — orange */
+        radial-gradient(circle at 50% 50%,
+          transparent 278px,
+          rgba(255,122,0,0.10) 280px,
+          rgba(255,122,0,0.10) 281px,
+          transparent 283px),
+        /* Ring 3 — cyan */
+        radial-gradient(circle at 50% 50%,
+          transparent 388px,
+          rgba(0,224,255,0.08) 390px,
+          rgba(0,224,255,0.08) 391px,
+          transparent 393px),
+        /* Ring 4 — orange */
+        radial-gradient(circle at 50% 50%,
+          transparent 508px,
+          rgba(255,122,0,0.07) 510px,
+          rgba(255,122,0,0.07) 511px,
+          transparent 513px),
+        /* Ring 5 — cyan, outermost */
+        radial-gradient(circle at 50% 50%,
+          transparent 638px,
+          rgba(0,224,255,0.05) 640px,
+          rgba(0,224,255,0.05) 641px,
+          transparent 643px);
+      animation: ctaSpin 90s linear infinite;
+      opacity: .9;
+    }
+    /* center glow under text */
+    .cta-banner::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 320px; height: 320px;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(255,122,0,0.16), transparent 70%);
+    }
+    @keyframes ctaSpin {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to   { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .cta-banner::before { animation: none; }
     }
     .cta-banner h2 {
       position: relative;
+      z-index: 1;
       margin: 0 0 14px;
       font-size: clamp(28px, 3.6vw, 44px);
       letter-spacing: -.03em;
@@ -1125,12 +1307,13 @@
     }
     .cta-banner p {
       position: relative;
+      z-index: 1;
       margin: 0 auto 32px;
       color: var(--text-3);
       font-size: 16.5px;
       max-width: 580px;
     }
-    .cta-banner .cta-row { position: relative; justify-content: center; }
+    .cta-banner .cta-row { position: relative; z-index: 1; justify-content: center; }
 
     /* ---------- Footer ---------- */
     footer.foot {
@@ -1157,7 +1340,7 @@
     }
     .foot-grid ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
     .foot-grid a { color: var(--text-3); font-size: 13.5px; transition: color .15s ease; }
-    .foot-grid a:hover { color: var(--text-1); }
+    .foot-grid a:hover { color: var(--accent-2); }
     .foot-tag { color: var(--text-3); font-size: 13.5px; max-width: 320px; margin: 12px 0 18px; line-height: 1.55; }
     .foot-rule {
       width: 56px;
@@ -1175,7 +1358,7 @@
       font-size: 12.5px;
     }
     .foot-bottom .legal a { color: var(--text-3); margin-left: 14px; transition: color .15s ease; }
-    .foot-bottom .legal a:hover { color: var(--text-1); }
+    .foot-bottom .legal a:hover { color: var(--accent-2); }
   </style>
 </head>
 <body>
@@ -1224,13 +1407,14 @@
       <div class="wrap hero-grid">
         <div>
           <a class="hero-pill" href="https://github.com/adithyan-ak/agenthound/releases" rel="noopener" target="_blank" aria-label="Latest release: v0.5.0">
+            <span class="pulse" aria-hidden="true"></span>
             <span class="tag">v0.5.0</span>
             <span>embedding-inversion extractor shipped</span>
             <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
 
           <h1 class="hero-title">
-            Attack-path discovery for AI&nbsp;agent <span class="grad">infrastructure</span>.
+            <span class="nobr">Attack-path</span> discovery for <span class="nobr">AI&nbsp;agent</span> <span class="grad">infrastructure</span>.
           </h1>
 
           <p class="hero-sub">
@@ -1271,10 +1455,11 @@
             <svg id="graph-svg" viewBox="0 0 600 600" preserveAspectRatio="xMidYMid meet"></svg>
           </div>
           <div class="stage-key" aria-hidden="true">
-            <span><span class="sw" style="background:#22d3ee"></span>Agent</span>
-            <span><span class="sw" style="background:#34d399"></span>MCP&nbsp;Server</span>
-            <span><span class="sw" style="background:#f59e0b"></span>MCP&nbsp;Tool</span>
-            <span><span class="sw" style="background:#ec4899"></span>LiteLLM</span>
+            <span><span class="sw" style="background:var(--accent-2)"></span>Agent</span>
+            <span><span class="sw" style="background:var(--ok)"></span>MCP&nbsp;Server</span>
+            <span><span class="sw" style="background:var(--accent)"></span>MCP&nbsp;Tool</span>
+            <span><span class="sw" style="background:var(--accent)"></span>LiteLLM</span>
+            <span><span class="sw" style="background:var(--warn)"></span>Credential</span>
             <span><span class="sw" style="background:var(--accent)"></span>CAN_REACH</span>
           </div>
         </div>
@@ -1284,20 +1469,21 @@
     <!-- ============== TRUST / SURFACES ============== -->
     <section class="trust" aria-label="Surfaces AgentHound covers">
       <div class="wrap">
+        <span class="trust-eyebrow"><span class="dot" aria-hidden="true"></span>Detection coverage</span>
         <div class="rule" aria-hidden="true"></div>
         <p class="trust-statement">
           <em>Maps the trust graph across</em>
-          <span class="surface" style="--c:#7E57C2">MCP&nbsp;servers</span>,
-          <span class="surface" style="--c:#9CCC65">A2A&nbsp;agents</span>,
-          <span class="surface" style="--c:#00BCD4">LiteLLM</span>,
-          <span class="surface" style="--c:#4CAF50">Ollama</span>,
-          <span class="surface" style="--c:#FF9800">vLLM</span>,
-          <span class="surface" style="--c:#E91E63">Qdrant</span>,
-          <span class="surface" style="--c:#9C27B0">MLflow</span>,
-          <span class="surface" style="--c:#F57C00">Jupyter</span>,
-          <span class="surface" style="--c:#2196F3">Open&nbsp;WebUI</span>,
+          <span class="surface" style="--c:var(--accent)">MCP&nbsp;servers</span>,
+          <span class="surface" style="--c:var(--accent-2)">A2A&nbsp;agents</span>,
+          <span class="surface" style="--c:var(--accent)">LiteLLM</span>,
+          <span class="surface" style="--c:var(--accent)">Ollama</span>,
+          <span class="surface" style="--c:var(--accent)">vLLM</span>,
+          <span class="surface" style="--c:var(--accent)">Qdrant</span>,
+          <span class="surface" style="--c:var(--accent)">MLflow</span>,
+          <span class="surface" style="--c:var(--accent-2)">Jupyter</span>,
+          <span class="surface" style="--c:var(--accent)">Open&nbsp;WebUI</span>,
           and
-          <span class="surface" style="--c:#9CCC65">LangServe</span>.
+          <span class="surface" style="--c:var(--accent-2)">LangServe</span>.
         </p>
       </div>
     </section>
@@ -1399,34 +1585,34 @@
             </div>
             <div class="schema-body">
               <div class="schema-row">
-                <span class="from"><span class="sw" style="background:#9CCC65"></span>Agent</span>
+                <span class="from"><span class="sw" style="background:var(--accent-2)"></span>Agent</span>
                 <span class="edge">TRUSTS_SERVER</span>
-                <span class="to"><span class="sw" style="background:#7E57C2"></span>MCPServer</span>
+                <span class="to"><span class="sw" style="background:var(--accent)"></span>MCPServer</span>
               </div>
               <div class="schema-row">
-                <span class="from"><span class="sw" style="background:#7E57C2"></span>MCPServer</span>
+                <span class="from"><span class="sw" style="background:var(--accent)"></span>MCPServer</span>
                 <span class="edge">EXPOSES_CREDENTIAL</span>
-                <span class="to"><span class="sw" style="background:#ffb454"></span>Credential</span>
+                <span class="to"><span class="sw" style="background:var(--warn)"></span>Credential</span>
               </div>
               <div class="schema-row">
-                <span class="from"><span class="sw" style="background:#00BCD4"></span>LiteLLM</span>
+                <span class="from"><span class="sw" style="background:var(--accent)"></span>LiteLLM</span>
                 <span class="edge">USES_CREDENTIAL</span>
-                <span class="to"><span class="sw" style="background:#ffb454"></span>Credential</span>
+                <span class="to"><span class="sw" style="background:var(--warn)"></span>Credential</span>
               </div>
               <div class="schema-row crit">
-                <span class="from"><span class="sw" style="background:#9CCC65"></span>Agent</span>
+                <span class="from"><span class="sw" style="background:var(--accent-2)"></span>Agent</span>
                 <span class="edge">CAN_REACH ⚡</span>
-                <span class="to"><span class="sw" style="background:#00BCD4"></span>LiteLLM</span>
+                <span class="to"><span class="sw" style="background:var(--accent)"></span>LiteLLM</span>
               </div>
               <div class="schema-row">
-                <span class="from"><span class="sw" style="background:#7E57C2"></span>MCPTool</span>
+                <span class="from"><span class="sw" style="background:var(--accent)"></span>MCPTool</span>
                 <span class="edge">SHADOWS</span>
-                <span class="to"><span class="sw" style="background:#7E57C2"></span>MCPTool</span>
+                <span class="to"><span class="sw" style="background:var(--accent)"></span>MCPTool</span>
               </div>
               <div class="schema-row">
-                <span class="from"><span class="sw" style="background:#9CCC65"></span>Agent</span>
+                <span class="from"><span class="sw" style="background:var(--accent-2)"></span>Agent</span>
                 <span class="edge">CAN_EXFILTRATE_VIA</span>
-                <span class="to"><span class="sw" style="background:#E91E63"></span>Qdrant</span>
+                <span class="to"><span class="sw" style="background:var(--accent)"></span>Qdrant</span>
               </div>
             </div>
             <div class="schema-foot">
@@ -1457,13 +1643,13 @@
             <p>Server&nbsp;A reads a credential. Server&nbsp;B uses that credential. An agent reaches B's resources without ever trusting B directly. The marquee detection — config files alone never reveal it.</p>
             <div class="diagram" aria-hidden="true">
               <div class="row">
-                <span class="pill"><span class="sw" style="background:#9CCC65"></span>Agent</span>
+                <span class="pill"><span class="sw" style="background:var(--accent-2)"></span>Agent</span>
                 <span class="arrow">→</span>
-                <span class="pill"><span class="sw" style="background:#7E57C2"></span>MCP-A</span>
+                <span class="pill"><span class="sw" style="background:var(--accent)"></span>MCP-A</span>
                 <span class="arrow">→</span>
-                <span class="pill" style="border-color: rgba(245,158,11,0.5); color: #f59e0b">sk-•••</span>
+                <span class="pill" style="border-color: rgba(255,214,0,0.45); color: var(--warn)">sk-•••</span>
                 <span class="arrow">→</span>
-                <span class="pill"><span class="sw" style="background:#00BCD4"></span>LiteLLM</span>
+                <span class="pill"><span class="sw" style="background:var(--accent)"></span>LiteLLM</span>
               </div>
               <div class="row label" style="margin-top:6px">
                 <span style="color: var(--accent)">CAN_REACH</span>&nbsp;via shared&nbsp;<code style="color:var(--text-1)">value_hash</code>
@@ -1543,88 +1729,88 @@
         </div>
 
         <div class="modules-grid">
-          <div class="mod" style="--mod-color:#9CCC65">
+          <div class="mod" style="--mod-color:var(--accent-2)">
             <div class="head"><span class="name">config</span><span class="badge enum">Enum</span></div>
             <p class="desc">Discover and parse local MCP/A2A client configs, instruction files, and credentials.</p>
           </div>
-          <div class="mod" style="--mod-color:#7E57C2">
+          <div class="mod" style="--mod-color:var(--accent-2)">
             <div class="head"><span class="name">mcp</span><span class="badge enum">Enum</span></div>
             <p class="desc">Enumerate MCP servers, tools, resources, prompts, and signals over the wire.</p>
           </div>
-          <div class="mod" style="--mod-color:#9CCC65">
+          <div class="mod" style="--mod-color:var(--accent-2)">
             <div class="head"><span class="name">a2a</span><span class="badge enum">Enum</span></div>
             <p class="desc">Fetch and parse A2A agent cards over HTTP, including JWS signature verification.</p>
           </div>
-          <div class="mod" style="--mod-color:#2196F3">
+          <div class="mod" style="--mod-color:var(--accent-2)">
             <div class="head"><span class="name">networkscan</span><span class="badge scan">Scan</span></div>
             <p class="desc">Scan a CIDR / host / file-of-targets for AI/ML services on standard ports.</p>
           </div>
-          <div class="mod" style="--mod-color:#7E57C2">
+          <div class="mod" style="--mod-color:var(--accent-2)">
             <div class="head"><span class="name">protoscan</span><span class="badge scan">Scan</span></div>
             <p class="desc">Discover MCP servers via JSON-RPC <code style="font-family:var(--font-mono)">initialize</code> probe.</p>
           </div>
 
-          <div class="mod" style="--mod-color:#00BCD4">
+          <div class="mod" style="--mod-color:var(--accent-2)">
             <div class="head"><span class="name">litellmfp</span><span class="badge fp">Fingerprint</span></div>
             <p class="desc">Identify LiteLLM proxy/gateway servers via <code style="font-family:var(--font-mono)">/health/liveliness</code>.</p>
           </div>
-          <div class="mod" style="--mod-color:#00BCD4">
+          <div class="mod" style="--mod-color:var(--warn)">
             <div class="head"><span class="name">litellmloot</span><span class="badge loot">Loot</span></div>
             <p class="desc">Extract upstream provider credentials via the LiteLLM master key (GET only).</p>
           </div>
-          <div class="mod" style="--mod-color:#4CAF50">
+          <div class="mod" style="--mod-color:var(--accent-2)">
             <div class="head"><span class="name">ollamafp</span><span class="badge fp">Fingerprint</span></div>
             <p class="desc">Identify Ollama LLM servers via <code style="font-family:var(--font-mono)">/api/version</code>.</p>
           </div>
-          <div class="mod" style="--mod-color:#4CAF50">
+          <div class="mod" style="--mod-color:var(--warn)">
             <div class="head"><span class="name">ollamaloot</span><span class="badge loot">Loot</span></div>
             <p class="desc">Anonymous model inventory + modelfiles; flag-gated weights and embeddings.</p>
           </div>
-          <div class="mod" style="--mod-color:#FF9800">
+          <div class="mod" style="--mod-color:var(--accent-2)">
             <div class="head"><span class="name">vllmfp</span><span class="badge fp">Fingerprint</span></div>
             <p class="desc">Identify vLLM inference servers via <code style="font-family:var(--font-mono)">/v1/models</code>.</p>
           </div>
-          <div class="mod" style="--mod-color:#E91E63">
+          <div class="mod" style="--mod-color:var(--accent-2)">
             <div class="head"><span class="name">qdrantfp</span><span class="badge fp">Fingerprint</span></div>
             <p class="desc">Identify Qdrant vector databases by canonical title + version JSON.</p>
           </div>
-          <div class="mod" style="--mod-color:#9C27B0">
+          <div class="mod" style="--mod-color:var(--accent-2)">
             <div class="head"><span class="name">mlflowfp</span><span class="badge fp">Fingerprint</span></div>
             <p class="desc">Identify MLflow Tracking Server via the experiments-search API.</p>
           </div>
-          <div class="mod" style="--mod-color:#9C27B0">
+          <div class="mod" style="--mod-color:var(--warn)">
             <div class="head"><span class="name">mlflowloot</span><span class="badge loot">Loot</span></div>
             <p class="desc">Anonymous, GET-only experiment + run metadata extraction from MLflow.</p>
           </div>
-          <div class="mod" style="--mod-color:#F57C00">
+          <div class="mod" style="--mod-color:var(--accent-2)">
             <div class="head"><span class="name">jupyterfp</span><span class="badge fp">Fingerprint</span></div>
             <p class="desc">Identify Jupyter Server via <code style="font-family:var(--font-mono)">/api/status</code>.</p>
           </div>
-          <div class="mod" style="--mod-color:#F57C00">
+          <div class="mod" style="--mod-color:var(--warn)">
             <div class="head"><span class="name">jupyterloot</span><span class="badge loot">Loot</span></div>
             <p class="desc">Anonymous notebook inventory and active session enumeration.</p>
           </div>
-          <div class="mod" style="--mod-color:#9CCC65">
+          <div class="mod" style="--mod-color:var(--accent-2)">
             <div class="head"><span class="name">langservefp</span><span class="badge fp">Fingerprint</span></div>
             <p class="desc">Identify LangServe (LangChain HTTP API) by OpenAPI title.</p>
           </div>
-          <div class="mod" style="--mod-color:#2196F3">
+          <div class="mod" style="--mod-color:var(--accent-2)">
             <div class="head"><span class="name">openwebuifp</span><span class="badge fp">Fingerprint</span></div>
             <p class="desc">Identify Open WebUI; capture its configured Ollama backend.</p>
           </div>
-          <div class="mod" style="--mod-color:#E91E63">
+          <div class="mod" style="--mod-color:var(--critical-strong)">
             <div class="head"><span class="name">mcppoison</span><span class="badge pois">Poison</span></div>
             <p class="desc">Rewrite MCP tool descriptions. Reverter mandatory; <code style="font-family:var(--font-mono)">--commit=false</code> default.</p>
           </div>
-          <div class="mod" style="--mod-color:#E91E63">
+          <div class="mod" style="--mod-color:var(--critical-strong)">
             <div class="head"><span class="name">instructionpoison</span><span class="badge pois">Poison</span></div>
             <p class="desc">Sentinel-bracketed instruction injection in CLAUDE.md / AGENTS.md / .cursorrules.</p>
           </div>
-          <div class="mod" style="--mod-color:#9C27B0">
+          <div class="mod" style="--mod-color:var(--critical-strong)">
             <div class="head"><span class="name">mcpconfigimplant</span><span class="badge impl">Implant</span></div>
             <p class="desc">Add a malicious MCP server entry to a client config (.cursor/mcp.json, etc).</p>
           </div>
-          <div class="mod" style="--mod-color:#FF9800">
+          <div class="mod" style="--mod-color:var(--warn)">
             <div class="head"><span class="name">embeddinginvert</span><span class="badge extr">Extract</span></div>
             <p class="desc">Detect fine-tune training signals via embedding-layer outlier analysis on GGUF.</p>
           </div>
@@ -1825,11 +2011,11 @@ agenthound scan --config --output - \
 
       // Per-kind chrome (matches agenthound-server data viz palette)
       var KINDS = {
-        agent:   { stroke: '#22d3ee', label: 'AGENT INSTANCE' },
-        mcp:     { stroke: '#34d399', label: 'MCP SERVER' },
-        tool:    { stroke: '#f59e0b', label: 'MCP TOOL' },
-        litellm: { stroke: '#ec4899', label: 'LITELLM GATEWAY' },
-        cred:    { stroke: '#f59e0b', label: 'CREDENTIAL' }
+        agent:   { stroke: '#00e0ff', label: 'AGENT INSTANCE' },
+        mcp:     { stroke: '#00ff85', label: 'MCP SERVER' },
+        tool:    { stroke: '#ff7a00', label: 'MCP TOOL' },
+        litellm: { stroke: '#ff7a00', label: 'LITELLM GATEWAY' },
+        cred:    { stroke: '#ffd600', label: 'CREDENTIAL' }
       };
 
       // Hand-laid composition. Three rows; cross-vector CAN_REACH from
@@ -1894,9 +2080,9 @@ agenthound scan --config --output - \
       var defs = document.createElementNS(SVG_NS, 'defs');
       defs.innerHTML = ''
         + '<marker id="arrow-reach" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">'
-        +   '<path d="M0 0 L10 5 L0 10 z" fill="#ff7a1a"/>'
+        +   '<path d="M0 0 L10 5 L0 10 z" fill="#ff7a00"/>'
         + '</marker>'
-        + '<filter id="amber-glow" x="-50%" y="-50%" width="200%" height="200%">'
+        + '<filter id="reach-glow" x="-50%" y="-50%" width="200%" height="200%">'
         +   '<feGaussianBlur stdDeviation="2.5" result="b"/>'
         +   '<feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>'
         + '</filter>';
@@ -1991,7 +2177,7 @@ agenthound scan --config --output - \
         ends.forEach(function (pt) {
           var d = document.createElementNS(SVG_NS, 'circle');
           d.setAttribute('r', '2.2');
-          d.setAttribute('fill', e.k === 'cred' ? '#f59e0b' : 'rgba(245,245,247,0.45)');
+          d.setAttribute('fill', e.k === 'cred' ? '#ffd600' : 'rgba(234,235,238,0.45)');
           d.setAttribute('cx', pt.x);
           d.setAttribute('cy', pt.y);
           gPorts.appendChild(d);
@@ -2007,12 +2193,12 @@ agenthound scan --config --output - \
       // the credential — the cross-vector chain made plain.
       var reachPath = document.createElementNS(SVG_NS, 'path');
       reachPath.setAttribute('fill', 'none');
-      reachPath.setAttribute('stroke', '#ff7a1a');
+      reachPath.setAttribute('stroke', '#ff7a00');
       reachPath.setAttribute('stroke-width', '2.2');
       reachPath.setAttribute('stroke-linecap', 'round');
       reachPath.setAttribute('stroke-dasharray', '5 6');
       reachPath.setAttribute('marker-end', 'url(#arrow-reach)');
-      reachPath.setAttribute('filter', 'url(#amber-glow)');
+      reachPath.setAttribute('filter', 'url(#reach-glow)');
       reachPath.setAttribute('opacity', '0.95');
       gReach.appendChild(reachPath);
 
@@ -2084,22 +2270,22 @@ agenthound scan --config --output - \
         var icon = makeIcon(n.kind, n.x, n.y, n.r);
         // primary label below the hex
         var t1 = svgEl('text', {
-          x: n.x, y: n.y + n.r + 18,
+          x: n.x, y: n.y + n.r + 22,
           'text-anchor': 'middle',
-          fill: 'rgba(245,245,247,0.92)',
-          'font-family': 'Geist, ui-sans-serif, sans-serif',
-          'font-size': '12.5',
+          fill: 'rgba(234,235,238,0.95)',
+          'font-family': 'Inter, ui-sans-serif, sans-serif',
+          'font-size': '15.5',
           'font-weight': '500',
           'letter-spacing': '-0.01em'
         });
         t1.textContent = n.label;
         // kind sub-label (tracked-out caps mono)
         var t2 = svgEl('text', {
-          x: n.x, y: n.y + n.r + 33,
+          x: n.x, y: n.y + n.r + 41,
           'text-anchor': 'middle',
-          fill: 'rgba(245,245,247,0.45)',
-          'font-family': 'Geist Mono, ui-monospace, monospace',
-          'font-size': '9',
+          fill: 'rgba(234,235,238,0.55)',
+          'font-family': 'JetBrains Mono, ui-monospace, monospace',
+          'font-size': '11',
           'letter-spacing': '0.18em'
         });
         t2.textContent = KINDS[n.kind].label;
@@ -2116,23 +2302,23 @@ agenthound scan --config --output - \
       // ---- Annotation: CAN_REACH callout ----
       var annotLeader = svgEl('path', {
         fill: 'none',
-        stroke: 'rgba(255,122,26,0.55)',
+        stroke: 'rgba(255,122,0,0.55)',
         'stroke-width': '0.8',
         'stroke-dasharray': '2 3'
       });
-      var annotDot = svgEl('circle', { r: '2.2', fill: '#ff7a1a' });
+      var annotDot = svgEl('circle', { r: '2.6', fill: '#ff7a00' });
       var annotTitle = svgEl('text', {
-        fill: '#ff7a1a',
-        'font-family': 'Geist Mono, ui-monospace, monospace',
-        'font-size': '12',
+        fill: '#ff7a00',
+        'font-family': 'JetBrains Mono, ui-monospace, monospace',
+        'font-size': '14',
         'letter-spacing': '0.06em',
         'font-weight': '500'
       });
       annotTitle.textContent = 'CAN_REACH';
       var annotSub = svgEl('text', {
-        fill: 'rgba(245,245,247,0.6)',
-        'font-family': 'Geist Mono, ui-monospace, monospace',
-        'font-size': '10.5',
+        fill: 'rgba(234,235,238,0.65)',
+        'font-family': 'JetBrains Mono, ui-monospace, monospace',
+        'font-size': '12',
         'letter-spacing': '0.02em'
       });
       annotSub.textContent = 'cross-vector · shared credential';
@@ -2183,7 +2369,7 @@ agenthound scan --config --output - \
         annotTitle.setAttribute('x', titleX);
         annotTitle.setAttribute('y', titleY);
         annotSub.setAttribute('x', titleX);
-        annotSub.setAttribute('y', titleY + 16);
+        annotSub.setAttribute('y', titleY + 18);
         // apex roughly at (c1x, c1y) — slightly past the cred
         var apexX = c1x - 18, apexY = c1y - 28;
         annotDot.setAttribute('cx', apexX);
@@ -2233,7 +2419,7 @@ agenthound scan --config --output - \
         ['prompt', 'agenthound scan 10.0.0.0/24 --engagement-id <span class="key">ENG-001</span> --output -'],
         ['comment', '# discovering MCP / A2A / AI services...'],
         ['indent', '<span class="cy">[litellmfp]</span> 10.0.0.10:4000  ✓ LiteLLM Gateway'],
-        ['indent', '<span style="color:#4CAF50">[ollamafp]</span>  10.0.0.11:11434 ✓ Ollama (4 models)'],
+        ['indent', '<span class="cy">[ollamafp]</span>  10.0.0.11:11434 ✓ Ollama (4 models)'],
         ['indent', '<span class="pk">[qdrantfp]</span>  10.0.0.12:6333  ✓ Qdrant 1.10.0'],
         ['indent', '<span class="pu">[mcp]</span>        cursor.config   ✓ 6 servers, 23 tools'],
         ['', ''],
