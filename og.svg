@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="AgentHound — Attack-path discovery for AI agent infrastructure">
+  <defs>
+    <radialGradient id="amber" cx="20%" cy="-10%" r="60%">
+      <stop offset="0" stop-color="#ff7a1a" stop-opacity="0.20"/>
+      <stop offset="1" stop-color="#ff7a1a" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="rule" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#ff7a1a" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#ff7a1a" stop-opacity="0.6"/>
+      <stop offset="1" stop-color="#ff7a1a" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#1f2026" stroke-width="1"/>
+    </pattern>
+    <style>
+      .display { font: 600 64px 'Geist','Inter',-apple-system,'Segoe UI',sans-serif; fill: #f5f5f7; letter-spacing: -1.5px; }
+      .display .it { font-style: italic; fill: #8e8f96; font-weight: 500; }
+      .sub      { font: 400 26px 'Geist','Inter',-apple-system,'Segoe UI',sans-serif; fill: #c8c9cf; letter-spacing: -0.3px; }
+      .meta     { font: 500 14px 'Geist Mono',ui-monospace,'SF Mono',Menlo,monospace; fill: #8e8f96; letter-spacing: 2px; text-transform: uppercase; }
+      .brand    { font: 600 28px 'Geist','Inter',-apple-system,'Segoe UI',sans-serif; fill: #f5f5f7; letter-spacing: -0.4px; }
+      .brand .l { fill: #c8c9cf; font-weight: 400; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="630" fill="#0a0a0b"/>
+  <rect width="1200" height="630" fill="url(#grid)" opacity="0.5"/>
+  <rect width="1200" height="630" fill="url(#amber)"/>
+
+  <!-- brand lockup -->
+  <g transform="translate(80,80)">
+    <path d="M16 4 26 10v12L16 28 6 22V10z" fill="none" stroke="#ff7a1a" stroke-width="2.4" transform="scale(1.6)"/>
+    <circle cx="16" cy="16" r="3" fill="#ff7a1a" transform="scale(1.6)"/>
+    <text x="62" y="34" class="brand"><tspan>agent</tspan><tspan class="l">hound</tspan></text>
+  </g>
+
+  <!-- amber rule + eyebrow -->
+  <line x1="80" y1="240" x2="200" y2="240" stroke="#ff7a1a" stroke-opacity="0.55" stroke-width="1.4"/>
+  <text x="80" y="222" class="meta">v0.5.0 · Apache 2.0 · Open source</text>
+
+  <!-- headline -->
+  <text x="80" y="320" class="display">Attack-path discovery</text>
+  <text x="80" y="392" class="display">for AI agent <tspan class="it">infrastructure</tspan>.</text>
+
+  <!-- subline -->
+  <text x="80" y="468" class="sub">BloodHound for MCP, A2A, LiteLLM, Ollama, vLLM, Qdrant, MLflow,</text>
+  <text x="80" y="500" class="sub">Jupyter, Open WebUI, and LangServe — graphed in Neo4j.</text>
+
+  <!-- footer rule + url -->
+  <rect x="80" y="558" width="1040" height="1" fill="url(#rule)"/>
+  <text x="80" y="592" class="meta">agenthound.io</text>
+  <text x="1120" y="592" class="meta" text-anchor="end">github.com/adithyan-ak/agenthound</text>
+</svg>

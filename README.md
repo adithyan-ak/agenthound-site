@@ -25,6 +25,13 @@ python3 -m http.server 8000
 
 - `index.html` — the page (HTML, CSS, JS inline)
 - `404.html` — fallback that redirects to `/`
+- `og.svg` — Open Graph / Twitter card (1200×630)
+- `robots.txt` — crawler rules + sitemap pointer
+- `sitemap.xml` — single-URL sitemap
+- `site.webmanifest` — PWA / install manifest
+- `favicon.ico`, `favicon-16x16.png`, `favicon-32x32.png`,
+  `apple-touch-icon.png`, `android-chrome-192x192.png`,
+  `android-chrome-512x512.png` — favicon set
 - `CNAME` — custom domain
 - `.nojekyll` — disables Jekyll processing
 
