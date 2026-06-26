@@ -1838,8 +1838,16 @@
 
         <div class="install-panels">
           <div class="panel">
-            <h4>1. Install the collector</h4>
-            <p>Single static Go binary. Linux, macOS, Windows.</p>
+            <h4>1. Stand up the server</h4>
+            <p>Docker Compose pulls Neo4j + Postgres + UI. Binds <code style="font-family:var(--font-mono)">127.0.0.1:8080</code>.</p>
+<pre><span class="cmt"># one command, no git clone needed</span>
+curl -sSfL <span class="acc">https://raw.githubusercontent.com/adithyan-ak/agenthound/main/docker/docker-compose.public.yml</span> \
+  | docker compose -f - -p agenthound up -d</pre>
+          </div>
+
+          <div class="panel">
+            <h4>2. Install the collector</h4>
+            <p>Single static binary, ~9 MiB. Linux, macOS, Windows.</p>
 <pre><span class="cmt"># one-liner</span>
 curl -sSfL <span class="acc">https://raw.githubusercontent.com/adithyan-ak/agenthound/main/install.sh</span> | sh
 
@@ -1848,25 +1856,20 @@ go install github.com/adithyan-ak/agenthound/collector/cmd/agenthound@latest</pr
           </div>
 
           <div class="panel">
-            <h4>2. Run a scan</h4>
-            <p>Local config discovery is offline-safe.</p>
+            <h4>3. Scan and open the graph</h4>
+            <p>One pipe streams the scan straight into the server. No tokens, no drag-drop, no extra flags.</p>
 <pre><span class="cmt"># local configs only — no network</span>
-agenthound scan <span class="acc">--config</span>
+agenthound scan <span class="acc">--config --output -</span> \
+  | curl --data-binary @- -H <span class="acc">"Content-Type: application/json"</span> \
+         <span class="acc">http://127.0.0.1:8080/api/v1/ingest</span>
 
-<span class="cmt"># network sweep</span>
-agenthound scan <span class="acc">10.0.0.0/24</span> \
-  --engagement-id ENG-001</pre>
-          </div>
+<span class="cmt"># network sweep — same pipe</span>
+agenthound scan <span class="acc">10.0.0.0/24</span> --engagement-id ENG-001 --output - \
+  | curl --data-binary @- -H <span class="acc">"Content-Type: application/json"</span> \
+         <span class="acc">http://127.0.0.1:8080/api/v1/ingest</span>
 
-          <div class="panel">
-            <h4>3. Stand up the server</h4>
-            <p>Docker Compose brings up Neo4j + Postgres + UI.</p>
-<pre><span class="cmt"># bring up the stack</span>
-docker compose up -d
-
-<span class="cmt"># ingest scan output</span>
-agenthound scan --config --output - \
-  | agenthound-server <span class="acc">ingest -</span></pre>
+<span class="cmt"># open the UI</span>
+open http://127.0.0.1:8080</pre>
           </div>
         </div>
 
