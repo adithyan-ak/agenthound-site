@@ -1,7 +1,7 @@
 {
   "name": "AgentHound",
   "short_name": "AgentHound",
-  "description": "Open-source red team framework for AI agent infrastructure — run the full offensive lifecycle across the agentic stack, then prove every attack path in Neo4j.",
+  "description": "Open-source red team framework for AI agent infrastructure. Run the full offensive lifecycle across the agentic stack, then prove every attack path in Neo4j.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

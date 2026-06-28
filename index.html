@@ -17,8 +17,8 @@
   <meta name="generator" content="hand-rolled">
   <meta name="format-detection" content="telephone=no">
 
-  <title>AgentHound — Red team framework for AI agent infrastructure</title>
-  <meta name="description" content="Open-source red team framework for AI agent infrastructure — run the full offensive lifecycle across the agentic stack (MCP, A2A, gateways, inference, vector stores), then prove every attack path in one Neo4j graph.">
+  <title>AgentHound: Red team framework for AI agent infrastructure</title>
+  <meta name="description" content="Open-source red team framework for AI agent infrastructure. Run the full offensive lifecycle across the agentic stack (MCP, A2A, gateways, inference, vector stores), then prove every attack path in one Neo4j graph.">
   <meta name="keywords" content="agenthound, red team framework, ai agent security, ai red team, offensive security, agentic security, mcp security, a2a security, llm security, ai infrastructure security, credential looting, model extraction, model inversion, tool poisoning, prompt injection, config implant, attack path, neo4j, mcp, a2a, litellm, ollama, vllm, qdrant, mlflow, jupyter, open webui, langserve, bloodhound">
   <meta name="author" content="Adithyan AK">
   <meta name="application-name" content="AgentHound">
@@ -29,21 +29,21 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="AgentHound">
   <meta property="og:url" content="https://agenthound.io/">
-  <meta property="og:title" content="AgentHound — Red team framework for AI agent infrastructure">
-  <meta property="og:description" content="One open-source tool runs the full offensive lifecycle — recon, credential looting, model & weight exfiltration, inversion, tool poisoning, config implants — across the entire agentic stack, then proves the attack paths in one graph.">
+  <meta property="og:title" content="AgentHound: Red team framework for AI agent infrastructure">
+  <meta property="og:description" content="One open-source tool runs the full offensive lifecycle (recon, credential looting, model &amp; weight exfiltration, inversion, tool poisoning, config implants) across the entire agentic stack, then proves the attack paths in one graph.">
   <meta property="og:image" content="https://agenthound.io/og.png">
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="AgentHound — red team framework for AI agent infrastructure">
+  <meta property="og:image:alt" content="AgentHound: red team framework for AI agent infrastructure">
   <meta property="og:locale" content="en_US">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="AgentHound — Red team framework for AI agent infrastructure">
-  <meta name="twitter:description" content="One tool runs the full offensive lifecycle across MCP, A2A, gateways, inference and vector stores — then proves every attack path in one Neo4j graph.">
+  <meta name="twitter:title" content="AgentHound: Red team framework for AI agent infrastructure">
+  <meta name="twitter:description" content="One tool runs the full offensive lifecycle across MCP, A2A, gateways, inference and vector stores, then proves every attack path in one Neo4j graph.">
   <meta name="twitter:image" content="https://agenthound.io/og.png">
-  <meta name="twitter:image:alt" content="AgentHound — red team framework for AI agent infrastructure">
+  <meta name="twitter:image:alt" content="AgentHound: red team framework for AI agent infrastructure">
 
   <!-- Favicons -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="any">
@@ -63,7 +63,7 @@
         "name": "AgentHound",
         "url": "https://agenthound.io/",
         "image": "https://agenthound.io/og.png",
-        "description": "Open-source red team framework for AI agent infrastructure. Runs the full offensive lifecycle — recon, fingerprinting, credential looting, model & weight exfiltration, model inversion, tool/instruction poisoning, config implants — across MCP, A2A, model gateways, inference servers, vector stores, MLOps, notebooks and client configs, then computes cross-protocol attack paths in a Neo4j graph.",
+        "description": "Open-source red team framework for AI agent infrastructure. Runs the full offensive lifecycle (recon, fingerprinting, credential looting, model & weight exfiltration, model inversion, tool/instruction poisoning, config implants) across MCP, A2A, model gateways, inference servers, vector stores, MLOps, notebooks and client configs, then computes cross-protocol attack paths in a Neo4j graph.",
         "applicationCategory": "SecurityApplication",
         "applicationSubCategory": "Offensive security / red team framework",
         "operatingSystem": "Linux, macOS, Windows",
@@ -110,7 +110,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
-    /* ---------- Design tokens — Deep Space Security Operations ---------- */
+    /* ---------- Design tokens - Deep Space Security Operations ---------- */
     :root {
       /* Surfaces */
       --surface-0:    #0d0e12;
@@ -121,20 +121,20 @@
       --line:         #2a2c33;
       --line-strong:  #3a3d45;
 
-      /* Text — four tiers tuned for dark mode */
+      /* Text - four tiers tuned for dark mode */
       --text-1:       #eaebee;
       --text-2:       #c4c7cd;
       --text-3:       #8a8f98;
       --text-4:       #5c5f66;
 
-      /* Brand chrome — Solar Flare Orange (CTAs, critical) */
+      /* Brand chrome - Solar Flare Orange (CTAs, critical) */
       --accent:       #ff7a00;
       --accent-soft:  #ff9933;
       --accent-tint:  rgba(255, 122, 0, 0.10);
       --accent-line:  rgba(255, 122, 0, 0.32);
       --accent-ink:   #1a0a00;
 
-      /* Secondary accent — Digital Cyan (active, interactive) */
+      /* Secondary accent - Digital Cyan (active, interactive) */
       --accent-2:       #00e0ff;
       --accent-2-tint:  rgba(0, 224, 255, 0.10);
       --accent-2-line:  rgba(0, 224, 255, 0.32);
@@ -145,7 +145,7 @@
       --critical:         #ef4444;
       --critical-strong:  #ff5a3c;
 
-      /* Product node palette — DATA VIZ ONLY (graph, schema, modules, terminal) */
+      /* Product node palette - DATA VIZ ONLY (graph, schema, modules, terminal) */
       --litellm:      #00BCD4;
       --ollama:       #4CAF50;
       --vllm:         #FF9800;
@@ -208,7 +208,7 @@
     h1, h2, h3, h4, h5, h6 { color: var(--text-1); text-wrap: balance; }
     :focus-visible { outline: 1px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
 
-    /* ---------- Ambient background — one quiet amber wash ---------- */
+    /* ---------- Ambient background - one quiet amber wash ---------- */
     body::before {
       content: "";
       position: fixed;
@@ -654,7 +654,7 @@
       .stage-key { display: none; }
     }
 
-    /* ---------- Trust strip — editorial sentence, not a pill row ---------- */
+    /* ---------- Trust strip - editorial sentence, not a pill row ---------- */
     .trust {
       padding: 96px 0;
       text-align: center;
@@ -1121,7 +1121,7 @@
     @media (max-width: 980px) { .modules-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
     @media (max-width: 560px) { .modules-grid { grid-template-columns: minmax(0, 1fr); } }
 
-    /* Mobile glass fallback — drop blur on cards in single-column layouts to protect paint perf */
+    /* Mobile glass fallback - drop blur on cards in single-column layouts to protect paint perf */
     @media (max-width: 560px) {
       .bento .card,
       .mod {
@@ -1172,7 +1172,7 @@
       background: var(--mod-color, var(--brand));
     }
 
-    /* module badges — severity-aware ladder */
+    /* module badges - severity-aware ladder */
     .badge.scan,
     .badge.enum {
       color: var(--text-3);
@@ -1253,7 +1253,7 @@
       overflow: hidden;
       isolation: isolate;
     }
-    /* orbital ring backdrop — concentric thin bands, slowly rotating */
+    /* orbital ring backdrop - concentric thin bands, slowly rotating */
     .cta-banner::before {
       content: "";
       position: absolute;
@@ -1265,31 +1265,31 @@
       pointer-events: none;
       z-index: 0;
       background:
-        /* Ring 1 — innermost, faint cyan */
+        /* Ring 1 - innermost, faint cyan */
         radial-gradient(circle at 50% 50%,
           transparent 178px,
           rgba(0,224,255,0.10) 180px,
           rgba(0,224,255,0.10) 181px,
           transparent 183px),
-        /* Ring 2 — orange */
+        /* Ring 2 - orange */
         radial-gradient(circle at 50% 50%,
           transparent 278px,
           rgba(255,122,0,0.10) 280px,
           rgba(255,122,0,0.10) 281px,
           transparent 283px),
-        /* Ring 3 — cyan */
+        /* Ring 3 - cyan */
         radial-gradient(circle at 50% 50%,
           transparent 388px,
           rgba(0,224,255,0.08) 390px,
           rgba(0,224,255,0.08) 391px,
           transparent 393px),
-        /* Ring 4 — orange */
+        /* Ring 4 - orange */
         radial-gradient(circle at 50% 50%,
           transparent 508px,
           rgba(255,122,0,0.07) 510px,
           rgba(255,122,0,0.07) 511px,
           transparent 513px),
-        /* Ring 5 — cyan, outermost */
+        /* Ring 5 - cyan, outermost */
         radial-gradient(circle at 50% 50%,
           transparent 638px,
           rgba(0,224,255,0.05) 640px,
@@ -1513,7 +1513,7 @@
           </h1>
 
           <p class="hero-sub">
-            One open-source tool runs the <b>full offensive lifecycle</b> — recon, credential looting, model &amp; weight exfiltration, inversion, tool/instruction poisoning, config implants — across <b>every layer of the agentic stack</b>: MCP, A2A, gateways, inference servers, vector stores and notebooks. Then proves the attack paths in one Neo4j graph.
+            One open-source tool runs the <b>full offensive lifecycle</b> (recon, credential looting, model &amp; weight exfiltration, inversion, tool/instruction poisoning, config implants) across <b>every layer of the agentic stack</b>: MCP, A2A, gateways, inference servers, vector stores and notebooks. Then proves the attack paths in one Neo4j graph.
           </p>
 
           <div class="cta-row">
@@ -1589,11 +1589,11 @@
         <div class="section-head">
           <span class="eyebrow">The agentic stack</span>
           <h2>One framework, spanning every layer.</h2>
-          <p>AgentHound treats the entire agentic estate as one target set — client configs, protocols, gateways, inference, vector stores, MLOps, notebooks, frontends. No single-protocol scanner, A2A scanner, or LLM-gateway tool covers this surface.</p>
+          <p>AgentHound treats the entire agentic estate as one target set: client configs, protocols, gateways, inference, vector stores, MLOps, notebooks, frontends. No single-protocol scanner, A2A scanner, or LLM-gateway tool covers this surface.</p>
         </div>
         <div class="stack">
           <div class="stack-title">
-            <span class="t">The agentic stack — AgentHound spans all of it</span>
+            <span class="t">The agentic stack: AgentHound spans all of it</span>
             <span class="legend"><span><i style="background:var(--text-3)"></i>targets</span><span><i style="background:var(--accent-2)"></i>modules</span></span>
           </div>
           <div class="stack-grid">
@@ -1643,7 +1643,7 @@
         <div class="section-head">
           <span class="eyebrow">A framework, not a scanner</span>
           <h2>The full offensive lifecycle. One graph.</h2>
-          <p>A scanner reads one thing and flags it. AgentHound sweeps, harvests, exploits, analyzes and cleans up — every verb emits the same ingest envelope and lands in one Neo4j graph, so the pieces compose without manual stitching.</p>
+          <p>A scanner reads one thing and flags it. AgentHound sweeps, harvests, exploits, analyzes and cleans up. Every verb emits the same ingest envelope and lands in one Neo4j graph, so the pieces compose without manual stitching.</p>
         </div>
 
         <div class="verbs" id="verbs-grid">
@@ -1713,7 +1713,7 @@
         <div class="section-head">
           <span class="eyebrow">Loot becomes paths. Paths become proof.</span>
           <h2>Run a query. Get a critical path.</h2>
-          <p>19 prebuilt attack-path queries, crosswalked to OWASP MCP &amp; Agentic Top 10 and 7 MITRE ATLAS techniques. Findings snapshot to Postgres for retest-as-diff — proving a path is gone, not just re-reported.</p>
+          <p>19 prebuilt attack-path queries, crosswalked to OWASP MCP &amp; Agentic Top 10 and 7 MITRE ATLAS techniques. Findings snapshot to Postgres for retest-as-diff, proving a path is gone, not just re-reported.</p>
         </div>
 
         <div class="showcase">
@@ -1721,7 +1721,7 @@
           <div class="terminal" aria-hidden="true">
             <div class="terminal-bar">
               <span class="dots"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></span>
-              <span class="title">~/engagement-001 — agenthound</span>
+              <span class="title">~/engagement-001 · agenthound</span>
             </div>
             <div class="terminal-body" id="term"></div>
           </div>
@@ -1778,7 +1778,7 @@
         <div class="section-head">
           <span class="eyebrow">The offensive primitives</span>
           <h2>The capabilities that make it a framework.</h2>
-          <p>Weight extraction, model inversion, credential looting across gateways, tool and instruction poisoning, config implants, RAG enumeration — and the cross-protocol graph analysis that ties the loot together at the end.</p>
+          <p>Weight extraction, model inversion, credential looting across gateways, tool and instruction poisoning, config implants, RAG enumeration, and the cross-protocol graph analysis that ties the loot together at the end.</p>
         </div>
 
         <div class="bento">
@@ -1789,7 +1789,7 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M5 21h14"/></svg>
             </div>
             <h3>Model &amp; weight exfiltration</h3>
-            <p>Direct theft of the model itself, not just metadata. The Ollama looter streams <b style="color:var(--text-1);font-weight:500">raw model weights</b> to disk — plus modelfiles, templates, and system prompts — anonymously, since default Ollama ships with no auth. One of the most impactful things the tool does.</p>
+            <p>Direct theft of the model itself, not just metadata. The Ollama looter streams <b style="color:var(--text-1);font-weight:500">raw model weights</b> to disk (plus modelfiles, templates, and system prompts) anonymously, since default Ollama ships with no auth. One of the most impactful things the tool does.</p>
             <div class="diagram" aria-hidden="true">
               <div class="row">
                 <span class="pill"><span class="sw" style="background:var(--ollama)"></span>Ollama</span>
@@ -1840,7 +1840,7 @@
             <div class="ico">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/></svg>
             </div>
-            <h3>Config implant — persistence</h3>
+            <h3>Config implant: persistence</h3>
             <p>Add a malicious MCP server to <code style="font-family:var(--font-mono);font-size:12px">.cursor/mcp.json</code>; the IDE auto-trusts the attacker's server on every future launch.</p>
           </article>
 
@@ -1851,7 +1851,7 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/></svg>
             </div>
             <h3>RAG / vector &amp; notebook</h3>
-            <p>Anonymous Qdrant collection inventory + point counts; Jupyter sessions and recursive notebook-tree listing — most ship with no auth.</p>
+            <p>Anonymous Qdrant collection inventory + point counts; Jupyter sessions and recursive notebook-tree listing. Most ship with no auth.</p>
           </article>
 
           <!-- Cross-protocol CAN_REACH (demoted to last-mile) -->
@@ -1861,7 +1861,7 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h7a4 4 0 0 1 4 4v6"/><path d="M20 17h-7a4 4 0 0 1-4-4V7"/><circle cx="4" cy="7" r="2"/><circle cx="20" cy="17" r="2"/></svg>
             </div>
             <h3>Cross-protocol CAN_REACH</h3>
-            <p>15 post-processors compute 12 composite edges. <code style="font-family:var(--font-mono);font-size:12px;color:var(--accent)">CAN_REACH</code> ties the loot together — the last-mile join, up to 6 hops, not the headline.</p>
+            <p>15 post-processors compute 12 composite edges. <code style="font-family:var(--font-mono);font-size:12px;color:var(--accent)">CAN_REACH</code> ties the loot together: the last-mile join, up to 6 hops, not the headline.</p>
           </article>
 
           <!-- Reversibility -->
@@ -1883,7 +1883,7 @@
         <div class="section-head">
           <span class="eyebrow">The arsenal at a glance</span>
           <h2>Breadth, quantified.</h2>
-          <p>22 self-registering modules plus the protoscan discovery engine — every one emits the same ingest envelope and converges into a single queryable, pathfindable graph, crosswalked to OWASP MCP &amp; Agentic Top 10 and 7 MITRE ATLAS techniques.</p>
+          <p>22 self-registering modules plus the protoscan discovery engine. Every one emits the same ingest envelope and converges into a single queryable, pathfindable graph, crosswalked to OWASP MCP &amp; Agentic Top 10 and 7 MITRE ATLAS techniques.</p>
         </div>
         <div class="stats">
           <div class="stat"><div class="num">8</div><div class="lab">Service planes covered</div><div class="sub">client &rarr; frontend, end to end</div></div>
@@ -2080,7 +2080,7 @@
       });
     })();
 
-    /* ----- hero hex topology — mirrors the agenthound-server graph language ----- */
+    /* ----- hero hex topology - mirrors the agenthound-server graph language ----- */
     (function () {
       var svg = document.getElementById('graph-svg');
       if (!svg) return;
@@ -2112,17 +2112,17 @@
       var hexR_sm = 22;  // credential
 
       var nodes = [
-        // top row — agents
+        // top row - agents
         { id:'claude', label:'claude-desktop', kind:'agent',   r:hexR_lg, x:172, y: 96 },
         { id:'cursor', label:'cursor',          kind:'agent',   r:hexR_lg, x:428, y: 96 },
 
-        // middle row — servers + cred + gateway
+        // middle row - servers + cred + gateway
         { id:'mcpFs', label:'mcp-fs',           kind:'mcp',     r:hexR_lg, x: 96, y:286 },
         { id:'pg',    label:'postgres-prod',    kind:'mcp',     r:hexR_lg, x:300, y:286 },
         { id:'cred',  label:'sk-•••',           kind:'cred',    r:hexR_sm, x:412, y:286 },
         { id:'lite',  label:'litellm-prod',     kind:'litellm', r:hexR_lg, x:512, y:286 },
 
-        // bottom row — tools
+        // bottom row - tools
         { id:'readf', label:'read_file',        kind:'tool',    r:hexR_md, x: 96, y:476 },
         { id:'lsdir', label:'list_dir',         kind:'tool',    r:hexR_md, x:198, y:476 },
         { id:'getsc', label:'get_schema',       kind:'tool',    r:hexR_md, x:300, y:476 },
@@ -2149,15 +2149,15 @@
         { a:'pg',     b:'execq',  k:'provides' },
         // tool provided by litellm-prod
         { a:'lite',   b:'embed',  k:'provides' },
-        // CRED CHAIN — lateral. mcp-fs exposes the credential; litellm uses it.
+        // CRED CHAIN - lateral. mcp-fs exposes the credential; litellm uses it.
         { a:'mcpFs',  b:'cred',   k:'cred' },
         { a:'cred',   b:'lite',   k:'cred' }
       ];
 
       // CAN_REACH: claude-desktop reaches execute_sql (tool of postgres-prod)
-      // via the credential chain — even though claude-desktop never trusts pg.
+      // via the credential chain - even though claude-desktop never trusts pg.
       // (cross-vector: agent -> own server's exposed cred -> sibling gateway
-      //  whose host co-locates pg's tools — the kind of path config files miss)
+      //  whose host co-locates pg's tools - the kind of path config files miss)
 
       // ---- Defs ----
       var defs = document.createElementNS(SVG_NS, 'defs');
@@ -2273,7 +2273,7 @@
       // claude-desktop -> mcpFs (own trust) -> cred (chain) -> lite -> embed?
       // Reads cleanest: a single sweeping arc from claude-desktop down across
       // the canvas to execute_sql, with the curve passing visibly *through*
-      // the credential — the cross-vector chain made plain.
+      // the credential - the cross-vector chain made plain.
       var reachPath = document.createElementNS(SVG_NS, 'path');
       reachPath.setAttribute('fill', 'none');
       reachPath.setAttribute('stroke', '#ff7a00');
@@ -2453,7 +2453,7 @@
         annotTitle.setAttribute('y', titleY);
         annotSub.setAttribute('x', titleX);
         annotSub.setAttribute('y', titleY + 18);
-        // apex roughly at (c1x, c1y) — slightly past the cred
+        // apex roughly at (c1x, c1y) - slightly past the cred
         var apexX = c1x - 18, apexY = c1y - 28;
         annotDot.setAttribute('cx', apexX);
         annotDot.setAttribute('cy', apexY);
@@ -2514,7 +2514,7 @@
         ['head', 'CRITICAL · 1 path found'],
         ['indent', '<span class="acc">Agent</span> →TRUSTS→ <span class="pu">MCP-A</span> →EXPOSES→ <span class="high">sk-•••</span> →USED_BY→ <span class="cy">LiteLLM</span>'],
         ['indent', '<span class="crit">CAN_REACH</span> · cross-protocol · severity=<span class="crit">critical</span>'],
-        ['comment', '# config files alone never reveal this — the path crosses three configs.'],
+        ['comment', '# config files alone never reveal this, the path crosses three configs.'],
         ['', '']
       ];
 
