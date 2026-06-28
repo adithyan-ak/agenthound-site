@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0a0b; --surface-1:#16171c; --line:#26282f; --line-strong:#363941;
+    --t1:#eef0f3; --t2:#c4c7cd; --t3:#8a8f98; --t4:#5c5f66;
+    --accent:#ff7a00; --accent-soft:#ff9a3c; --accent-tint:rgba(255,122,0,.12); --accent-line:rgba(255,122,0,.40);
+    --cy:#00e0ff; --ok:#00ff85; --warn:#ffd600; --green:#39d98a;
+    --sans:'Inter',-apple-system,'Segoe UI',sans-serif;
+    --mono:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{width:1200px;height:630px;overflow:hidden;background:var(--bg);font-family:var(--sans);}
+  .card{position:relative;width:1200px;height:630px;overflow:hidden;color:var(--t2);
+    background:
+      radial-gradient(680px 420px at 84% 92%, rgba(0,224,255,.10), transparent 60%),
+      radial-gradient(760px 460px at 8% -6%, rgba(255,122,0,.16), transparent 58%),
+      var(--bg);}
+  /* grid */
+  .card::before{content:"";position:absolute;inset:0;
+    background-image:linear-gradient(#ffffff0a 1px,transparent 1px),linear-gradient(90deg,#ffffff0a 1px,transparent 1px);
+    background-size:48px 48px;opacity:.5;mask-image:radial-gradient(120% 120% at 50% 40%, #000 55%, transparent 100%);}
+  /* top accent hairline */
+  .card::after{content:"";position:absolute;top:0;left:0;right:0;height:3px;
+    background:linear-gradient(90deg,var(--accent),rgba(255,122,0,0) 42%, rgba(0,224,255,0) 60%, var(--cy));opacity:.85;}
+
+  .inner{position:relative;z-index:2;display:grid;grid-template-columns:625px 1fr;height:100%;}
+  .left{padding:60px 0 56px 64px;display:flex;flex-direction:column;}
+  .right{position:relative;}
+
+  .brand{display:flex;align-items:center;gap:13px;}
+  .brand .logo{width:40px;height:40px;}
+  .brand .name{font-size:30px;font-weight:600;letter-spacing:-.5px;color:var(--t1);}
+  .brand .name .l{color:var(--t2);font-weight:400;}
+
+  .pill{margin-top:40px;display:inline-flex;align-items:center;gap:11px;align-self:flex-start;
+    padding:8px 16px 8px 12px;border:1px solid var(--accent-line);border-radius:999px;background:var(--accent-tint);}
+  .pill .dot{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 12px rgba(0,255,133,.7);}
+  .pill .v{font-family:var(--mono);font-size:15px;font-weight:600;color:var(--accent-soft);letter-spacing:.5px;}
+  .pill .sep{width:1px;height:15px;background:var(--accent-line);}
+  .pill .meta{font-family:var(--mono);font-size:14px;color:var(--t2);letter-spacing:.6px;}
+
+  h1{margin-top:26px;font-size:55px;line-height:1.04;letter-spacing:-2px;font-weight:600;color:var(--t1);max-width:600px;}
+  h1 .o{color:var(--accent);}
+  h1 .i{font-style:italic;font-weight:500;color:var(--t3);}
+
+  .sub{margin-top:22px;font-size:19px;line-height:1.5;color:var(--t2);max-width:560px;}
+  .sub b{color:var(--t1);font-weight:600;}
+
+  .rail{margin-top:26px;display:flex;align-items:center;gap:9px;flex-wrap:wrap;}
+  .rail .v{font-family:var(--mono);font-size:13.5px;color:var(--t2);padding:5px 11px;border:1px solid var(--line-strong);border-radius:7px;background:#ffffff05;}
+  .rail .a{color:var(--accent);font-size:14px;}
+
+  .foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;padding-right:64px;
+    font-family:var(--mono);font-size:14px;color:var(--t3);letter-spacing:.3px;}
+  .foot .url{color:var(--t2);}
+  .foot .gh{color:var(--t4);}
+
+  #g{position:absolute;top:50%;left:50%;transform:translate(-50%,-48%);width:560px;height:560px;overflow:visible;}
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="inner">
+      <div class="left">
+        <div class="brand">
+          <svg class="logo" viewBox="0 0 32 32" fill="none"><path d="M16 3 27 9.5v13L16 29 5 22.5v-13z" stroke="#ff7a00" stroke-width="2.4" stroke-linejoin="round"/><circle cx="16" cy="16" r="3.2" fill="#ff7a00"/></svg>
+          <div class="name"><span>agent</span><span class="l">hound</span></div>
+        </div>
+
+        <div class="pill">
+          <span class="dot"></span>
+          <span class="meta">Apache-2.0 · open source</span>
+        </div>
+
+        <h1>The <span class="o">red&nbsp;team framework</span> for AI&nbsp;agent <span class="i">infrastructure</span>.</h1>
+
+        <p class="sub">One tool runs the <b>full offensive lifecycle</b> across the entire agentic stack — then proves every attack path in one graph.</p>
+
+        <div class="rail">
+          <span class="v">scan</span><span class="a">→</span>
+          <span class="v">loot</span><span class="a">→</span>
+          <span class="v">extract</span><span class="a">→</span>
+          <span class="v">poison</span><span class="a">→</span>
+          <span class="v">analyze</span>
+        </div>
+
+        <div class="foot">
+          <span class="url">agenthound.io</span>
+          <span class="gh">github.com/adithyan-ak/agenthound</span>
+        </div>
+      </div>
+
+      <div class="right">
+        <svg id="g" viewBox="0 0 560 560" preserveAspectRatio="xMidYMid meet"></svg>
+      </div>
+    </div>
+  </div>
+
+<script>
+(function(){
+  var NS='http://www.w3.org/2000/svg';
+  var svg=document.getElementById('g');
+  function el(t,a){var e=document.createElementNS(NS,t);for(var k in a)e.setAttribute(k,a[k]);return e;}
+  var KIND={
+    agent:{c:'#00e0ff',l:'AGENT'},
+    mcp:{c:'#00ff85',l:'MCP SERVER'},
+    cred:{c:'#ffd600',l:'CREDENTIAL'},
+    gw:{c:'#ff7a00',l:'LITELLM GATEWAY'},
+    tool:{c:'#ff7a00',l:'MCP TOOL'}
+  };
+  var nodes=[
+    {id:'claude',label:'claude-desktop',kind:'agent',r:42,x:150,y:96},
+    {id:'mcp',   label:'mcp-fs',        kind:'mcp',  r:42,x:118,y:300},
+    {id:'cred',  label:'sk-•••',        kind:'cred', r:28,x:300,y:300},
+    {id:'gw',    label:'litellm-prod',  kind:'gw',   r:42,x:470,y:300},
+    {id:'tool',  label:'execute_sql',   kind:'tool', r:34,x:300,y:486}
+  ];
+  var byId={};nodes.forEach(function(n){byId[n.id]=n;});
+  function hex(cx,cy,R){var p=[];for(var i=0;i<6;i++){var a=Math.PI/3*i+Math.PI/6;p.push((cx+R*Math.cos(a)).toFixed(1)+','+(cy+R*Math.sin(a)).toFixed(1));}return p.join(' ');}
+  function top(n){return{x:n.x,y:n.y-n.r};}
+  function bot(n){return{x:n.x,y:n.y+n.r};}
+  function lat(n,s){var dx=n.r*Math.cos(Math.PI/6);return{x:n.x+(s==='l'?-dx:dx),y:n.y};}
+
+  // defs
+  var defs=el('defs',{});
+  defs.innerHTML='<marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#ff7a00"/></marker>'+
+    '<filter id="glow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>';
+  svg.appendChild(defs);
+
+  var gE=el('g',{}),gN=el('g',{});svg.appendChild(gE);svg.appendChild(gN);
+
+  // faint structural edges
+  function edge(p1,p2,opts){
+    var dy=p2.y-p1.y;
+    var d='M '+p1.x+' '+p1.y+' C '+p1.x+' '+(p1.y+dy*0.55)+' '+p2.x+' '+(p2.y-dy*0.55)+' '+p2.x+' '+p2.y;
+    var pth=el('path',{d:d,fill:'none','stroke-linecap':'round'});
+    for(var k in opts)pth.setAttribute(k,opts[k]);
+    gE.appendChild(pth);
+  }
+  function credEdge(a,b){
+    var p1=lat(a,'r'),p2=lat(b,'l');var midY=(p1.y+p2.y)/2+22;
+    var d='M '+p1.x+' '+p1.y+' C '+(p1.x+(p2.x-p1.x)*0.4)+' '+midY+' '+(p1.x+(p2.x-p1.x)*0.6)+' '+midY+' '+p2.x+' '+p2.y;
+    gE.appendChild(el('path',{d:d,fill:'none',stroke:'rgba(255,158,11,.55)','stroke-width':'1.6','stroke-dasharray':'4 5','stroke-linecap':'round'}));
+  }
+  edge(bot(byId.claude),top(byId.mcp),{stroke:'rgba(234,235,238,.16)','stroke-width':'1.3'});
+  edge(bot(byId.mcp),top(byId.tool),{stroke:'rgba(234,235,238,.16)','stroke-width':'1.3'});
+  credEdge(byId.mcp,byId.cred);
+  credEdge(byId.cred,byId.gw);
+
+  // CAN_REACH arc: claude -> through cred -> execute_sql
+  var s=lat(byId.claude,'r'),t=top(byId.tool),via=byId.cred;
+  var reach=el('path',{fill:'none',stroke:'#ff7a00','stroke-width':'2.6','stroke-linecap':'round','stroke-dasharray':'6 6','marker-end':'url(#ah)',filter:'url(#glow)',
+    d:'M '+s.x+' '+s.y+' C '+(via.x+70)+' '+(s.y+64)+' '+via.x+' '+(via.y+34)+' '+t.x+' '+(t.y-5)});
+  gE.appendChild(reach);
+
+  // node icons (compact)
+  function icon(kind,cx,cy,R){
+    var g=el('g',{transform:'translate('+cx+','+cy+')',fill:'none',stroke:KIND[kind].c,'stroke-width':'1.8','stroke-linecap':'round','stroke-linejoin':'round'});
+    var s=R*0.42;
+    if(kind==='agent'){g.appendChild(el('circle',{cx:0,cy:-s*0.5,r:s*0.46}));g.appendChild(el('path',{d:'M '+(-s*0.85)+' '+(s*0.72)+' a '+(s*0.85)+' '+(s*0.85)+' 0 0 1 '+(s*1.7)+' 0'}));}
+    else if(kind==='mcp'){g.appendChild(el('rect',{x:-s*0.85,y:-s*0.7,width:s*1.7,height:s*0.55,rx:'2'}));g.appendChild(el('rect',{x:-s*0.85,y:s*0.15,width:s*1.7,height:s*0.55,rx:'2'}));g.appendChild(el('line',{x1:-s*0.55,y1:-s*0.42,x2:-s*0.2,y2:-s*0.42}));g.appendChild(el('line',{x1:-s*0.55,y1:s*0.42,x2:-s*0.2,y2:s*0.42}));}
+    else if(kind==='gw'){g.appendChild(el('circle',{cx:-s*0.7,cy:-s*0.5,r:s*0.22}));g.appendChild(el('circle',{cx:s*0.7,cy:-s*0.5,r:s*0.22}));g.appendChild(el('circle',{cx:0,cy:s*0.6,r:s*0.22}));g.appendChild(el('path',{d:'M '+(-s*0.55)+' '+(-s*0.35)+' L 0 '+(s*0.4)+' L '+(s*0.55)+' '+(-s*0.35)}));}
+    else if(kind==='tool'){g.appendChild(el('path',{d:'M '+(-s*0.9)+' '+(s*0.5)+' L '+(s*0.2)+' '+(-s*0.6)+' a '+(s*0.5)+' '+(s*0.5)+' 0 1 1 '+(s*0.65)+' '+(s*0.65)+' L '+(-s*0.4)+' '+(s*1)+' z'}));g.appendChild(el('circle',{cx:-s*0.65,cy:s*0.7,r:s*0.16,fill:KIND[kind].c,stroke:'none'}));}
+    else if(kind==='cred'){g.appendChild(el('circle',{cx:-s*0.25,cy:0,r:s*0.36}));g.appendChild(el('line',{x1:0,y1:0,x2:s*0.85,y2:0}));g.appendChild(el('line',{x1:s*0.55,y1:0,x2:s*0.55,y2:s*0.34}));g.appendChild(el('line',{x1:s*0.85,y1:0,x2:s*0.85,y2:s*0.44}));}
+    return g;
+  }
+
+  nodes.forEach(function(n){
+    var g=el('g',{});
+    g.appendChild(el('polygon',{points:hex(n.x,n.y,n.r+6),fill:KIND[n.kind].c,opacity:'0.07'}));
+    g.appendChild(el('polygon',{points:hex(n.x,n.y,n.r),fill:'#0a0a0b',stroke:KIND[n.kind].c,'stroke-width':'2','stroke-linejoin':'round'}));
+    g.appendChild(icon(n.kind,n.x,n.y,n.r));
+    var t1=el('text',{x:n.x,y:n.y+n.r+24,'text-anchor':'middle',fill:'rgba(238,240,243,.96)','font-family':'Inter,sans-serif','font-size':'16','font-weight':'500','letter-spacing':'-.2px'});t1.textContent=n.label;
+    var t2=el('text',{x:n.x,y:n.y+n.r+42,'text-anchor':'middle',fill:'rgba(238,240,243,.5)','font-family':'JetBrains Mono,monospace','font-size':'10.5','letter-spacing':'1.6px'});t2.textContent=KIND[n.kind].l;
+    g.appendChild(t1);g.appendChild(t2);
+    gN.appendChild(g);
+  });
+
+  // CAN_REACH annotation
+  var an=el('g',{});
+  var ax=346,ay=150;
+  an.appendChild(el('text',{x:ax,y:ay,fill:'#ff7a00','font-family':'JetBrains Mono,monospace','font-size':'17','font-weight':'600','letter-spacing':'.6px'})).textContent='CAN_REACH';
+  an.appendChild(el('text',{x:ax,y:ay+20,fill:'rgba(238,240,243,.62)','font-family':'JetBrains Mono,monospace','font-size':'12.5','letter-spacing':'.3px'})).textContent='cross-vector chain';
+  svg.appendChild(an);
+})();
+</script>
+</body>
+</html>

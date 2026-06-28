@@ -17,10 +17,11 @@
   <meta name="generator" content="hand-rolled">
   <meta name="format-detection" content="telephone=no">
 
-  <title>AgentHound — Attack-path discovery for AI agent infrastructure</title>
-  <meta name="description" content="BloodHound for MCP/A2A. AgentHound enumerates AI agent configs, builds a directed trust graph in Neo4j, and surfaces multi-hop attack paths that single-file scanners can't see.">
-  <meta name="keywords" content="agenthound, bloodhound, mcp security, a2a security, ai agent security, attack path, neo4j, litellm, ollama, vllm, qdrant, mlflow, jupyter, open webui, langserve, prompt injection, tool poisoning, llm security, ai infrastructure, red team">
+  <title>AgentHound — Red team framework for AI agent infrastructure</title>
+  <meta name="description" content="Open-source red team framework for AI agent infrastructure — run the full offensive lifecycle across the agentic stack (MCP, A2A, gateways, inference, vector stores), then prove every attack path in one Neo4j graph.">
+  <meta name="keywords" content="agenthound, red team framework, ai agent security, ai red team, offensive security, agentic security, mcp security, a2a security, llm security, ai infrastructure security, credential looting, model extraction, model inversion, tool poisoning, prompt injection, config implant, attack path, neo4j, mcp, a2a, litellm, ollama, vllm, qdrant, mlflow, jupyter, open webui, langserve, bloodhound">
   <meta name="author" content="Adithyan AK">
+  <meta name="application-name" content="AgentHound">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
   <link rel="canonical" href="https://agenthound.io/">
 
@@ -28,21 +29,21 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="AgentHound">
   <meta property="og:url" content="https://agenthound.io/">
-  <meta property="og:title" content="AgentHound — Attack-path discovery for AI agent infrastructure">
-  <meta property="og:description" content="BloodHound for MCP/A2A. Enumerate agent configs, graph the trust topology in Neo4j, and surface multi-hop attack paths that single-file scanners can't see.">
-  <meta property="og:image" content="https://agenthound.io/og.svg">
-  <meta property="og:image:type" content="image/svg+xml">
+  <meta property="og:title" content="AgentHound — Red team framework for AI agent infrastructure">
+  <meta property="og:description" content="One open-source tool runs the full offensive lifecycle — recon, credential looting, model & weight exfiltration, inversion, tool poisoning, config implants — across the entire agentic stack, then proves the attack paths in one graph.">
+  <meta property="og:image" content="https://agenthound.io/og.png">
+  <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="AgentHound — attack-path discovery for AI agent infrastructure">
+  <meta property="og:image:alt" content="AgentHound — red team framework for AI agent infrastructure">
   <meta property="og:locale" content="en_US">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="AgentHound — Attack-path discovery for AI agent infrastructure">
-  <meta name="twitter:description" content="BloodHound for MCP/A2A config sprawl. Multi-hop attack paths that single-file scanners can't see.">
-  <meta name="twitter:image" content="https://agenthound.io/og.svg">
-  <meta name="twitter:image:alt" content="AgentHound — attack-path discovery for AI agent infrastructure">
+  <meta name="twitter:title" content="AgentHound — Red team framework for AI agent infrastructure">
+  <meta name="twitter:description" content="One tool runs the full offensive lifecycle across MCP, A2A, gateways, inference and vector stores — then proves every attack path in one Neo4j graph.">
+  <meta name="twitter:image" content="https://agenthound.io/og.png">
+  <meta name="twitter:image:alt" content="AgentHound — red team framework for AI agent infrastructure">
 
   <!-- Favicons -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="any">
@@ -61,16 +62,27 @@
         "@id": "https://agenthound.io/#software",
         "name": "AgentHound",
         "url": "https://agenthound.io/",
-        "image": "https://agenthound.io/og.svg",
-        "description": "BloodHound for AI agent infrastructure. Enumerates MCP, A2A, LiteLLM, Ollama, vLLM, Qdrant, MLflow, Jupyter, Open WebUI, and LangServe surfaces; builds a directed trust graph in Neo4j; surfaces multi-hop attack paths.",
+        "image": "https://agenthound.io/og.png",
+        "description": "Open-source red team framework for AI agent infrastructure. Runs the full offensive lifecycle — recon, fingerprinting, credential looting, model & weight exfiltration, model inversion, tool/instruction poisoning, config implants — across MCP, A2A, model gateways, inference servers, vector stores, MLOps, notebooks and client configs, then computes cross-protocol attack paths in a Neo4j graph.",
         "applicationCategory": "SecurityApplication",
-        "applicationSubCategory": "Attack-path discovery",
+        "applicationSubCategory": "Offensive security / red team framework",
         "operatingSystem": "Linux, macOS, Windows",
-        "softwareVersion": "0.5.0",
+        "softwareVersion": "0.7.0",
         "license": "https://www.apache.org/licenses/LICENSE-2.0",
         "downloadUrl": "https://github.com/adithyan-ak/agenthound/releases",
         "codeRepository": "https://github.com/adithyan-ak/agenthound",
         "programmingLanguage": "Go",
+        "featureList": [
+          "Full-spectrum agentic attack-surface coverage (MCP, A2A, gateways, inference, vector stores, MLOps, notebooks, configs)",
+          "Recon, fingerprinting and enumeration across 8 AI services",
+          "Credential looting across the gateway and service plane",
+          "Model and weight exfiltration",
+          "GGUF model inversion / training-data residue extraction",
+          "Reversible tool and instruction poisoning",
+          "Config implant persistence",
+          "Cross-protocol attack-path analysis in Neo4j (CAN_REACH)",
+          "Crosswalked to OWASP MCP Top 10, OWASP Agentic Top 10, and MITRE ATLAS"
+        ],
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
         "author": { "@id": "https://agenthound.io/#author" }
       },
@@ -85,7 +97,7 @@
         "@id": "https://agenthound.io/#website",
         "url": "https://agenthound.io/",
         "name": "AgentHound",
-        "description": "Attack-path discovery for AI agent infrastructure",
+        "description": "Red team framework for AI agent infrastructure",
         "publisher": { "@id": "https://agenthound.io/#author" }
       }
     ]
@@ -476,6 +488,7 @@
       }
     }
     h1.hero-title .nobr { white-space: nowrap; }
+    h1.hero-title .of { color: var(--accent); }
     h1.hero-title .grad {
       color: var(--text-3);
       font-weight: 500;
@@ -1368,6 +1381,77 @@
     }
     .foot-bottom .legal a { color: var(--text-3); margin-left: 14px; transition: color .15s ease; }
     .foot-bottom .legal a:hover { color: var(--accent-2); }
+    /* ---------- Agentic stack ---------- */
+    .stack {
+      position: relative;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: linear-gradient(180deg, var(--surface-1), var(--surface-0));
+      padding: 26px;
+      box-shadow: 0 40px 90px -50px rgba(0,0,0,.8);
+    }
+    .stack-title { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; flex-wrap: wrap; gap: 10px; }
+    .stack-title .t { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--text-3); }
+    .stack-title .legend { display: flex; gap: 16px; font-family: var(--font-mono); font-size: 10.5px; color: var(--text-4); }
+    .stack-title .legend i { display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 5px; vertical-align: -1px; }
+    .stack-grid { display: grid; grid-template-columns: 64px 1fr; gap: 14px; }
+    .span-rail { border-radius: 12px; border: 1px solid var(--accent-line); background: linear-gradient(180deg, var(--accent-tint), rgba(255,122,0,.02)); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+    .span-rail span { writing-mode: vertical-rl; transform: rotate(180deg); font-family: var(--font-mono); font-size: 12px; letter-spacing: .22em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+    .span-rail::after { content: ""; position: absolute; left: 0; right: 0; height: 40px; top: -40px; background: linear-gradient(180deg, transparent, rgba(255,122,0,.5), transparent); animation: stackSweep 3.4s linear infinite; }
+    @keyframes stackSweep { 0% { top: -40px; } 100% { top: 100%; } }
+    @media (prefers-reduced-motion: reduce) { .span-rail::after { animation: none; } }
+    .planes { display: flex; flex-direction: column; gap: 10px; }
+    .plane { display: grid; grid-template-columns: 178px 1fr; gap: 14px; align-items: center; border: 1px solid var(--line); border-radius: 11px; background: var(--surface-1); padding: 13px 16px; transition: border-color .15s ease, background .15s ease, transform .15s ease; }
+    .plane:hover { border-color: var(--accent-2-line); background: var(--surface-2); transform: translateX(2px); }
+    .plane .pname { display: flex; align-items: center; gap: 10px; }
+    .plane .pname .pi { width: 30px; height: 30px; border-radius: 8px; border: 1px solid var(--line-strong); display: grid; place-items: center; color: var(--c, var(--accent-2)); background: var(--surface-0); flex: 0 0 auto; }
+    .plane .pname .pi svg { width: 16px; height: 16px; }
+    .plane .pname .pl { font-size: 13.5px; color: var(--text-1); font-weight: 500; line-height: 1.2; }
+    .plane .pname .pl small { display: block; font-family: var(--font-mono); font-size: 10px; color: var(--text-4); letter-spacing: .04em; text-transform: uppercase; font-weight: 400; }
+    .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+    .chip { font-family: var(--font-mono); font-size: 11px; padding: 3px 9px; border-radius: 6px; border: 1px solid var(--line); background: var(--surface-0); color: var(--text-3); }
+    .chip.t { color: var(--text-2); border-color: var(--line-strong); }
+    .chip.m { color: var(--c, var(--accent-2)); border-color: color-mix(in srgb, var(--c, var(--accent-2)) 32%, transparent); }
+    @media (max-width: 760px) {
+      .stack { padding: 18px; }
+      .stack-grid { grid-template-columns: 1fr; }
+      .span-rail { height: 40px; }
+      .span-rail span { writing-mode: horizontal-tb; transform: none; }
+      .plane { grid-template-columns: 1fr; gap: 10px; }
+    }
+
+    /* ---------- Arsenal stat grid ---------- */
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    @media (max-width: 860px) { .stats { grid-template-columns: repeat(2, 1fr); } }
+    .stat { border: 1px solid var(--line); border-radius: 14px; padding: 24px; background: var(--surface-1); transition: border-color .15s ease, transform .15s ease; }
+    .stat:hover { border-color: var(--accent-line); transform: translateY(-2px); }
+    .stat:nth-child(2n):hover { border-color: var(--accent-2-line); }
+    .stat .num { font-family: var(--font-mono); font-size: 36px; font-weight: 600; color: var(--accent); letter-spacing: -.02em; line-height: 1; }
+    .stat:nth-child(2n) .num { color: var(--accent-2); }
+    .stat .lab { margin-top: 12px; font-size: 13.5px; color: var(--text-2); }
+    .stat .sub { margin-top: 5px; font-size: 11.5px; color: var(--text-4); line-height: 1.5; }
+
+    /* ---------- Install command rows (one-line, scrollable, copy) ---------- */
+    .install-note { font-family: var(--font-mono); font-size: 12px; color: var(--text-3); margin: 0 0 22px; padding: 12px 14px; border: 1px dashed var(--line-strong); border-radius: 10px; background: var(--surface-1); }
+    .install-note b { color: var(--text-1); font-weight: 600; }
+    .cmd-list { display: flex; flex-direction: column; gap: 12px; }
+    .cmd-step { display: grid; grid-template-columns: 1fr; gap: 8px; }
+    .cmd-step .cap { display: flex; align-items: baseline; gap: 10px; }
+    .cmd-step .cap .n { font-family: var(--font-mono); font-size: 11px; color: var(--accent); border: 1px solid var(--accent-line); background: var(--accent-tint); border-radius: 6px; padding: 2px 8px; flex: 0 0 auto; }
+    .cmd-step .cap h4 { font-size: 14px; color: var(--text-1); font-weight: 500; }
+    .cmd-step .cap span { color: var(--text-3); font-size: 13px; }
+    .cmd-row { display: flex; align-items: center; gap: 10px; padding: 12px 12px 12px 14px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface-0); }
+    .cmd-row .pmt { color: var(--accent); font-family: var(--font-mono); font-size: 13px; flex: 0 0 auto; }
+    .cmd-row code { font-family: var(--font-mono); font-size: 13px; color: var(--text-2); white-space: nowrap; overflow-x: auto; flex: 1; scrollbar-width: thin; }
+    .cmd-row code::-webkit-scrollbar { height: 6px; }
+    .cmd-row code::-webkit-scrollbar-thumb { background: var(--line-strong); border-radius: 3px; }
+    .cmd-row code .acc { color: var(--accent); }
+    .cmd-row code .cmt { color: var(--text-4); }
+    .copy-cmd { display: inline-flex; align-items: center; gap: 5px; padding: 6px 10px; border: 1px solid var(--line-strong); border-radius: 7px; color: var(--text-3); font-size: 11px; font-family: var(--font-mono); flex: 0 0 auto; transition: border-color .15s ease, color .15s ease; }
+    .copy-cmd:hover { color: var(--text-1); border-color: var(--accent-line); }
+    .copy-cmd.is-copied { color: var(--ok); border-color: rgba(0,255,133,.4); }
+    .copy-cmd svg { width: 13px; height: 13px; }
+
   </style>
 </head>
 <body>
@@ -1381,9 +1465,10 @@
       </a>
 
       <nav class="nav-links" aria-label="Primary">
-        <a href="#features">Features</a>
-        <a href="#modules">Modules</a>
-        <a href="#paths">Attack paths</a>
+        <a href="#stack">Coverage</a>
+        <a href="#verbs">Lifecycle</a>
+        <a href="#features">Capabilities</a>
+        <a href="#arsenal">Arsenal</a>
         <a href="#install">Install</a>
         <a href="https://docs.agenthound.io/" rel="noopener" target="_blank">Docs</a>
       </nav>
@@ -1401,10 +1486,11 @@
   </header>
 
   <nav class="nav-drawer" id="nav-drawer" aria-label="Mobile menu">
-    <a href="#features">Features</a>
-    <a href="#verbs">Verbs</a>
-    <a href="#modules">Modules</a>
+    <a href="#stack">Coverage</a>
+    <a href="#verbs">Lifecycle</a>
     <a href="#paths">Attack paths</a>
+    <a href="#features">Capabilities</a>
+    <a href="#arsenal">Arsenal</a>
     <a href="#install">Install</a>
     <a href="https://docs.agenthound.io/" rel="noopener" target="_blank">Docs</a>
     <a class="drawer-cta" href="https://github.com/adithyan-ak/agenthound" rel="noopener" target="_blank">Star on GitHub →</a>
@@ -1415,19 +1501,19 @@
     <section class="hero">
       <div class="wrap hero-grid">
         <div>
-          <a class="hero-pill" href="https://github.com/adithyan-ak/agenthound/releases" rel="noopener" target="_blank" aria-label="Latest release: v0.5.0">
+          <a class="hero-pill" href="https://github.com/adithyan-ak/agenthound/releases" rel="noopener" target="_blank" aria-label="Latest release: v0.7.0">
             <span class="pulse" aria-hidden="true"></span>
-            <span class="tag">v0.5.0</span>
-            <span>embedding-inversion extractor shipped</span>
+            <span class="tag">v0.7.0</span>
+            <span>live scan &amp; discover progress output</span>
             <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
 
           <h1 class="hero-title">
-            <span class="nobr">Attack-path</span> discovery for <span class="nobr">AI&nbsp;agent</span> <span class="grad">infrastructure</span>.
+            The <span class="of">red&nbsp;team framework</span> for <span class="nobr">AI&nbsp;agent</span> <span class="grad">infrastructure</span>.
           </h1>
 
           <p class="hero-sub">
-            AgentHound is the <b>BloodHound for MCP/A2A config sprawl</b>. It enumerates MCP servers, A2A agents and AI-agent client configs across an estate, builds a directed trust graph in Neo4j, and uses shortest-path algorithms to surface multi-hop attack paths the configuration files alone never reveal.
+            One open-source tool runs the <b>full offensive lifecycle</b> — recon, credential looting, model &amp; weight exfiltration, inversion, tool/instruction poisoning, config implants — across <b>every layer of the agentic stack</b>: MCP, A2A, gateways, inference servers, vector stores and notebooks. Then proves the attack paths in one Neo4j graph.
           </p>
 
           <div class="cta-row">
@@ -1452,9 +1538,9 @@
 
           <div class="hero-meta">
             <span><span class="dot ok"></span>Apache 2.0</span>
-            <span><span class="dot"></span>Single ~9 MiB collector</span>
-            <span><span class="dot"></span>Neo4j 4.4 + 5.x</span>
-            <span><span class="dot"></span>21 modules</span>
+            <span><span class="dot"></span>Single ~9.4 MiB collector</span>
+            <span><span class="dot"></span>8 service planes</span>
+            <span><span class="dot"></span>22 modules</span>
           </div>
         </div>
 
@@ -1478,10 +1564,10 @@
     <!-- ============== TRUST / SURFACES ============== -->
     <section class="trust" aria-label="Surfaces AgentHound covers">
       <div class="wrap">
-        <span class="trust-eyebrow"><span class="dot" aria-hidden="true"></span>Detection coverage</span>
+        <span class="trust-eyebrow"><span class="dot" aria-hidden="true"></span>Full-spectrum coverage</span>
         <div class="rule" aria-hidden="true"></div>
         <p class="trust-statement">
-          <em>Maps the trust graph across</em>
+          <em>Maps and attacks every layer across</em>
           <span class="surface" style="--c:var(--accent)">MCP&nbsp;servers</span>,
           <span class="surface" style="--c:var(--accent-2)">A2A&nbsp;agents</span>,
           <span class="surface" style="--c:var(--accent)">LiteLLM</span>,
@@ -1497,13 +1583,67 @@
       </div>
     </section>
 
+    <!-- ============== AGENTIC STACK ============== -->
+    <section class="section" id="stack">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">The agentic stack</span>
+          <h2>One framework, spanning every layer.</h2>
+          <p>AgentHound treats the entire agentic estate as one target set — client configs, protocols, gateways, inference, vector stores, MLOps, notebooks, frontends. No single-protocol scanner, A2A scanner, or LLM-gateway tool covers this surface.</p>
+        </div>
+        <div class="stack">
+          <div class="stack-title">
+            <span class="t">The agentic stack — AgentHound spans all of it</span>
+            <span class="legend"><span><i style="background:var(--text-3)"></i>targets</span><span><i style="background:var(--accent-2)"></i>modules</span></span>
+          </div>
+          <div class="stack-grid">
+            <div class="span-rail"><span>AgentHound</span></div>
+            <div class="planes">
+              <div class="plane" style="--c:var(--accent-2)">
+                <div class="pname"><span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span><span class="pl">Agent client<small>plane</small></span></div>
+                <div class="chips"><span class="chip t">12 MCP client configs</span><span class="chip t">CLAUDE.md · .cursorrules</span><span class="chip m">config</span></div>
+              </div>
+              <div class="plane" style="--c:var(--accent-2)">
+                <div class="pname"><span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 7h16M4 12h16M4 17h10"/></svg></span><span class="pl">Protocol<small>plane</small></span></div>
+                <div class="chips"><span class="chip t">MCP (stdio + HTTP/SSE)</span><span class="chip t">A2A agent cards · JWS</span><span class="chip m">mcp</span><span class="chip m">a2a</span><span class="chip m">protoscan</span></div>
+              </div>
+              <div class="plane" style="--c:var(--litellm)">
+                <div class="pname"><span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M7.5 7.5 11 16M16.5 7.5 13 16"/></svg></span><span class="pl">Model gateway<small>plane</small></span></div>
+                <div class="chips"><span class="chip t">LiteLLM (provider keyring)</span><span class="chip m">litellmfp</span><span class="chip m">litellmloot</span></div>
+              </div>
+              <div class="plane" style="--c:var(--ollama)">
+                <div class="pname"><span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="4" width="16" height="16" rx="3"/><circle cx="9" cy="10" r="1.3"/><circle cx="15" cy="10" r="1.3"/><path d="M8 15h8"/></svg></span><span class="pl">Inference<small>plane</small></span></div>
+                <div class="chips"><span class="chip t">Ollama (weights!)</span><span class="chip t">vLLM</span><span class="chip m">ollamaloot</span><span class="chip m">vllmfp</span></div>
+              </div>
+              <div class="plane" style="--c:var(--qdrant)">
+                <div class="pname"><span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/></svg></span><span class="pl">Vector / RAG<small>plane</small></span></div>
+                <div class="chips"><span class="chip t">Qdrant collections</span><span class="chip m">qdrantfp</span><span class="chip m">qdrantloot</span></div>
+              </div>
+              <div class="plane" style="--c:var(--mlflow)">
+                <div class="pname"><span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19V5M4 19h16M8 16l3-4 3 2 4-6"/></svg></span><span class="pl">MLOps<small>plane</small></span></div>
+                <div class="chips"><span class="chip t">MLflow experiments/runs</span><span class="chip m">mlflowfp</span><span class="chip m">mlflowloot</span></div>
+              </div>
+              <div class="plane" style="--c:var(--jupyter)">
+                <div class="pname"><span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9l3 3-3 3M13 15h4"/></svg></span><span class="pl">Notebook<small>plane</small></span></div>
+                <div class="chips"><span class="chip t">Jupyter sessions + tree</span><span class="chip m">jupyterfp</span><span class="chip m">jupyterloot</span></div>
+              </div>
+              <div class="plane" style="--c:var(--openwebui)">
+                <div class="pname"><span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M7 21h10"/></svg></span><span class="pl">Frontend<small>plane</small></span></div>
+                <div class="chips"><span class="chip t">Open WebUI (RAG, keys)</span><span class="chip t">LangServe</span><span class="chip m">openwebuiloot</span><span class="chip m">langservefp</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ============== VERB PIPELINE ============== -->
     <section class="section verb-section" id="verbs">
       <div class="wrap">
         <div class="section-head">
-          <span class="eyebrow">The full operator workflow</span>
-          <h2>Seven verbs. One graph. End-to-end engagement.</h2>
-          <p>From discovery to looting, exploitation, and clean rollback — every step writes deterministic IDs into the same Neo4j graph, so the pieces compose without manual stitching.</p>
+          <span class="eyebrow">A framework, not a scanner</span>
+          <h2>The full offensive lifecycle. One graph.</h2>
+          <p>A scanner reads one thing and flags it. AgentHound sweeps, harvests, exploits, analyzes and cleans up — every verb emits the same ingest envelope and lands in one Neo4j graph, so the pieces compose without manual stitching.</p>
         </div>
 
         <div class="verbs" id="verbs-grid">
@@ -1571,9 +1711,9 @@
     <section class="section" id="paths">
       <div class="wrap">
         <div class="section-head">
-          <span class="eyebrow">Real output, not a mock</span>
+          <span class="eyebrow">Loot becomes paths. Paths become proof.</span>
           <h2>Run a query. Get a critical path.</h2>
-          <p>Pre-built detections map to OWASP MCP Top 10 + OWASP Agentic Top 10. Or drop into raw Cypher against the Neo4j graph for ad-hoc threat hunting.</p>
+          <p>19 prebuilt attack-path queries, crosswalked to OWASP MCP &amp; Agentic Top 10 and 7 MITRE ATLAS techniques. Findings snapshot to Postgres for retest-as-diff — proving a path is gone, not just re-reported.</p>
         </div>
 
         <div class="showcase">
@@ -1590,7 +1730,7 @@
           <div class="schema">
             <div class="schema-head">
               <h4>Graph schema, in motion</h4>
-              <span class="meta">22 node kinds · 24 edges</span>
+              <span class="meta">25 node labels · 30 edges</span>
             </div>
             <div class="schema-body">
               <div class="schema-row">
@@ -1636,193 +1776,124 @@
     <section class="section" id="features">
       <div class="wrap">
         <div class="section-head">
-          <span class="eyebrow">What AgentHound finds</span>
-          <h2>The paths static config scanners can't see.</h2>
-          <p>Single-file linters look at one config in isolation. AgentHound builds a directed trust graph across configs, services, and credentials — then runs shortest-path queries to surface multi-hop attack chains across protocols.</p>
+          <span class="eyebrow">The offensive primitives</span>
+          <h2>The capabilities that make it a framework.</h2>
+          <p>Weight extraction, model inversion, credential looting across gateways, tool and instruction poisoning, config implants, RAG enumeration — and the cross-protocol graph analysis that ties the loot together at the end.</p>
         </div>
 
         <div class="bento">
-          <!-- Marquee: credential chain -->
+          <!-- Marquee: model & weight exfiltration -->
           <article class="card span-4">
+            <span class="severity crit">Critical</span>
+            <div class="ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M5 21h14"/></svg>
+            </div>
+            <h3>Model &amp; weight exfiltration</h3>
+            <p>Direct theft of the model itself, not just metadata. The Ollama looter streams <b style="color:var(--text-1);font-weight:500">raw model weights</b> to disk — plus modelfiles, templates, and system prompts — anonymously, since default Ollama ships with no auth. One of the most impactful things the tool does.</p>
+            <div class="diagram" aria-hidden="true">
+              <div class="row">
+                <span class="pill"><span class="sw" style="background:var(--ollama)"></span>Ollama</span>
+                <span class="arrow">→</span>
+                <span class="pill"><code style="color:var(--text-2)">GET /api/blobs/&lt;digest&gt;</code></span>
+                <span class="arrow">→</span>
+                <span class="pill" style="border-color: rgba(255,214,0,0.45); color: var(--warn)">model.bin · multi-GiB</span>
+              </div>
+              <div class="row label" style="margin-top:6px">
+                emits <span style="color: var(--accent)">AIModel</span>&nbsp;node with modelfile&nbsp;<code style="color:var(--text-1)">value_hash</code>
+              </div>
+            </div>
+          </article>
+
+          <!-- Credential looting -->
+          <article class="card span-2">
             <span class="severity crit">Critical</span>
             <div class="ico">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-4z"/><path d="m9 12 2 2 4-4"/></svg>
             </div>
-            <h3>Credential-chain CAN_REACH</h3>
-            <p>Server&nbsp;A reads a credential. Server&nbsp;B uses that credential. An agent reaches B's resources without ever trusting B directly. The marquee detection — config files alone never reveal it.</p>
-            <div class="diagram" aria-hidden="true">
-              <div class="row">
-                <span class="pill"><span class="sw" style="background:var(--accent-2)"></span>Agent</span>
-                <span class="arrow">→</span>
-                <span class="pill"><span class="sw" style="background:var(--accent)"></span>MCP-A</span>
-                <span class="arrow">→</span>
-                <span class="pill" style="border-color: rgba(255,214,0,0.45); color: var(--warn)">sk-•••</span>
-                <span class="arrow">→</span>
-                <span class="pill"><span class="sw" style="background:var(--accent)"></span>LiteLLM</span>
-              </div>
-              <div class="row label" style="margin-top:6px">
-                <span style="color: var(--accent)">CAN_REACH</span>&nbsp;via shared&nbsp;<code style="color:var(--text-1)">value_hash</code>
-              </div>
-            </div>
+            <h3>Credential looting</h3>
+            <p>One LiteLLM master key → the whole upstream provider keyring (OpenAI/Anthropic/Bedrock). Merged across collectors by <code style="font-family:var(--font-mono);font-size:13px;color:var(--fg)">value_hash</code>.</p>
           </article>
 
-          <!-- Shell access -->
+          <!-- Model inversion -->
           <article class="card span-2">
-            <span class="severity crit">Critical</span>
+            <span class="severity med">v0.5 PoC</span>
             <div class="ico">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 7 9 12 4 17"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18"/><path d="m6 7 6 4 6-4"/><path d="m6 13 6 4 6-4"/></svg>
             </div>
-            <h3>Shell + DB access</h3>
-            <p>Transitive paths to filesystem, exec, and database tools across protocol boundaries.</p>
+            <h3>Model inversion</h3>
+            <p>A pure-Go GGUF parser runs statistical inversion on the embedding matrix to recover likely fine-tune vocabulary tokens. Loot the weights, then invert locally.</p>
           </article>
 
-          <!-- Tool poisoning -->
+          <!-- Tool & instruction poisoning -->
           <article class="card span-2">
             <span class="severity high">High</span>
             <div class="ico">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v6m4-6v6"/><path d="M5 8h14l-1 13H6L5 8z"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12s4-7 9-7 9 7 9 7-4 7-9 7-9-7-9-7z"/><circle cx="12" cy="12" r="3"/></svg>
             </div>
-            <h3>Tool poisoning</h3>
-            <p>Detects prompt-injection patterns in MCP tool descriptions across scans.</p>
+            <h3>Tool &amp; instruction poisoning</h3>
+            <p>Rewrite an MCP tool description, or inject a sentinel block into <code style="font-family:var(--font-mono);font-size:12px">CLAUDE.md</code> / <code style="font-family:var(--font-mono);font-size:12px">.cursorrules</code>. Reversible, <code style="font-family:var(--font-mono);font-size:12px;color:var(--accent)">--commit</code>-gated.</p>
           </article>
 
-          <!-- Tool shadowing -->
+          <!-- Config implant -->
           <article class="card span-2">
             <span class="severity high">High</span>
             <div class="ico">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="9" r="6"/><circle cx="15" cy="15" r="6" opacity=".5"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/></svg>
             </div>
-            <h3>Tool shadowing</h3>
-            <p>Identifies malicious tools mimicking legitimate names to hijack agent invocations.</p>
+            <h3>Config implant — persistence</h3>
+            <p>Add a malicious MCP server to <code style="font-family:var(--font-mono);font-size:12px">.cursor/mcp.json</code>; the IDE auto-trusts the attacker's server on every future launch.</p>
           </article>
 
-          <!-- Rug-pull -->
+          <!-- RAG / vector & notebook -->
           <article class="card span-2">
             <span class="severity high">High</span>
             <div class="ico">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18"/><path d="M6 8 3 12l3 4"/><path d="m18 8 3 4-3 4"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/></svg>
             </div>
-            <h3>Rug-pull detection</h3>
-            <p>Spots supply-chain attacks via description-hash drift between successive scans.</p>
+            <h3>RAG / vector &amp; notebook</h3>
+            <p>Anonymous Qdrant collection inventory + point counts; Jupyter sessions and recursive notebook-tree listing — most ship with no auth.</p>
           </article>
 
-          <!-- Cross protocol -->
-          <article class="card span-3">
+          <!-- Cross-protocol CAN_REACH (demoted to last-mile) -->
+          <article class="card span-2">
             <span class="severity crit">Critical</span>
             <div class="ico">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h7a4 4 0 0 1 4 4v6"/><path d="M20 17h-7a4 4 0 0 1-4-4V7"/><circle cx="4" cy="7" r="2"/><circle cx="20" cy="17" r="2"/></svg>
             </div>
-            <h3>Cross-protocol pivots</h3>
-            <p>A2A → MCP traversal via host co-location and shared identities — the academically novel paths that span agent meshes and tool servers in one query.</p>
+            <h3>Cross-protocol CAN_REACH</h3>
+            <p>15 post-processors compute 12 composite edges. <code style="font-family:var(--font-mono);font-size:12px;color:var(--accent)">CAN_REACH</code> ties the loot together — the last-mile join, up to 6 hops, not the headline.</p>
           </article>
 
           <!-- Reversibility -->
-          <article class="card span-3">
+          <article class="card span-2">
+            <span class="severity low">Safe by design</span>
             <div class="ico">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>
             </div>
             <h3>Forensic-grade reversibility</h3>
-            <p>Every <code style="font-family:var(--font-mono);font-size:13px;color:var(--fg)">poison</code> and <code style="font-family:var(--font-mono);font-size:13px;color:var(--fg)">implant</code> action persists a Receipt before it mutates anything. <code style="font-family:var(--font-mono);font-size:13px;color:var(--fg)">revert</code> is idempotent and rolls every destructive action back by engagement-id. Reverters are compile-time mandatory — embedded interface, not optional discipline.</p>
+            <p>Every <code style="font-family:var(--font-mono);font-size:13px;color:var(--fg)">poison</code> and <code style="font-family:var(--font-mono);font-size:13px;color:var(--fg)">implant</code> persists a Receipt before it mutates. <code style="font-family:var(--font-mono);font-size:13px;color:var(--fg)">revert</code> is idempotent; Reverters are compile-time mandatory.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- ============== MODULES ============== -->
-    <section class="section" id="modules">
+    <!-- ============== ARSENAL AT A GLANCE ============== -->
+    <section class="section" id="arsenal">
       <div class="wrap">
         <div class="section-head">
-          <span class="eyebrow">Modular by design</span>
-          <h2>21 self-registering modules. Add yours in an afternoon.</h2>
-          <p>Each module implements a single SDK action interface — Fingerprinter, Looter, Poisoner, Implanter, Extractor, or Enumerator — and registers itself via <code style="font-family:var(--font-mono);font-size:14px;color:var(--fg)">init()</code>. The collector binary stays lean (~9 MiB) by design.</p>
+          <span class="eyebrow">The arsenal at a glance</span>
+          <h2>Breadth, quantified.</h2>
+          <p>22 self-registering modules plus the protoscan discovery engine — every one emits the same ingest envelope and converges into a single queryable, pathfindable graph, crosswalked to OWASP MCP &amp; Agentic Top 10 and 7 MITRE ATLAS techniques.</p>
         </div>
-
-        <div class="modules-grid">
-          <div class="mod" style="--mod-color:var(--accent-2)">
-            <div class="head"><span class="name">config</span><span class="badge enum">Enum</span></div>
-            <p class="desc">Discover and parse local MCP/A2A client configs, instruction files, and credentials.</p>
-          </div>
-          <div class="mod" style="--mod-color:var(--accent-2)">
-            <div class="head"><span class="name">mcp</span><span class="badge enum">Enum</span></div>
-            <p class="desc">Enumerate MCP servers, tools, resources, prompts, and signals over the wire.</p>
-          </div>
-          <div class="mod" style="--mod-color:var(--accent-2)">
-            <div class="head"><span class="name">a2a</span><span class="badge enum">Enum</span></div>
-            <p class="desc">Fetch and parse A2A agent cards over HTTP, including JWS signature verification.</p>
-          </div>
-          <div class="mod" style="--mod-color:var(--accent-2)">
-            <div class="head"><span class="name">networkscan</span><span class="badge scan">Scan</span></div>
-            <p class="desc">Scan a CIDR / host / file-of-targets for AI/ML services on standard ports.</p>
-          </div>
-          <div class="mod" style="--mod-color:var(--accent-2)">
-            <div class="head"><span class="name">protoscan</span><span class="badge scan">Scan</span></div>
-            <p class="desc">Discover MCP servers via JSON-RPC <code style="font-family:var(--font-mono)">initialize</code> probe.</p>
-          </div>
-
-          <div class="mod" style="--mod-color:var(--accent-2)">
-            <div class="head"><span class="name">litellmfp</span><span class="badge fp">Fingerprint</span></div>
-            <p class="desc">Identify LiteLLM proxy/gateway servers via <code style="font-family:var(--font-mono)">/health/liveliness</code>.</p>
-          </div>
-          <div class="mod" style="--mod-color:var(--warn)">
-            <div class="head"><span class="name">litellmloot</span><span class="badge loot">Loot</span></div>
-            <p class="desc">Extract upstream provider credentials via the LiteLLM master key (GET only).</p>
-          </div>
-          <div class="mod" style="--mod-color:var(--accent-2)">
-            <div class="head"><span class="name">ollamafp</span><span class="badge fp">Fingerprint</span></div>
-            <p class="desc">Identify Ollama LLM servers via <code style="font-family:var(--font-mono)">/api/version</code>.</p>
-          </div>
-          <div class="mod" style="--mod-color:var(--warn)">
-            <div class="head"><span class="name">ollamaloot</span><span class="badge loot">Loot</span></div>
-            <p class="desc">Anonymous model inventory + modelfiles; flag-gated weights and embeddings.</p>
-          </div>
-          <div class="mod" style="--mod-color:var(--accent-2)">
-            <div class="head"><span class="name">vllmfp</span><span class="badge fp">Fingerprint</span></div>
-            <p class="desc">Identify vLLM inference servers via <code style="font-family:var(--font-mono)">/v1/models</code>.</p>
-          </div>
-          <div class="mod" style="--mod-color:var(--accent-2)">
-            <div class="head"><span class="name">qdrantfp</span><span class="badge fp">Fingerprint</span></div>
-            <p class="desc">Identify Qdrant vector databases by canonical title + version JSON.</p>
-          </div>
-          <div class="mod" style="--mod-color:var(--accent-2)">
-            <div class="head"><span class="name">mlflowfp</span><span class="badge fp">Fingerprint</span></div>
-            <p class="desc">Identify MLflow Tracking Server via the experiments-search API.</p>
-          </div>
-          <div class="mod" style="--mod-color:var(--warn)">
-            <div class="head"><span class="name">mlflowloot</span><span class="badge loot">Loot</span></div>
-            <p class="desc">Anonymous, GET-only experiment + run metadata extraction from MLflow.</p>
-          </div>
-          <div class="mod" style="--mod-color:var(--accent-2)">
-            <div class="head"><span class="name">jupyterfp</span><span class="badge fp">Fingerprint</span></div>
-            <p class="desc">Identify Jupyter Server via <code style="font-family:var(--font-mono)">/api/status</code>.</p>
-          </div>
-          <div class="mod" style="--mod-color:var(--warn)">
-            <div class="head"><span class="name">jupyterloot</span><span class="badge loot">Loot</span></div>
-            <p class="desc">Anonymous notebook inventory and active session enumeration.</p>
-          </div>
-          <div class="mod" style="--mod-color:var(--accent-2)">
-            <div class="head"><span class="name">langservefp</span><span class="badge fp">Fingerprint</span></div>
-            <p class="desc">Identify LangServe (LangChain HTTP API) by OpenAPI title.</p>
-          </div>
-          <div class="mod" style="--mod-color:var(--accent-2)">
-            <div class="head"><span class="name">openwebuifp</span><span class="badge fp">Fingerprint</span></div>
-            <p class="desc">Identify Open WebUI; capture its configured Ollama backend.</p>
-          </div>
-          <div class="mod" style="--mod-color:var(--critical-strong)">
-            <div class="head"><span class="name">mcppoison</span><span class="badge pois">Poison</span></div>
-            <p class="desc">Rewrite MCP tool descriptions. Reverter mandatory; <code style="font-family:var(--font-mono)">--commit=false</code> default.</p>
-          </div>
-          <div class="mod" style="--mod-color:var(--critical-strong)">
-            <div class="head"><span class="name">instructionpoison</span><span class="badge pois">Poison</span></div>
-            <p class="desc">Sentinel-bracketed instruction injection in CLAUDE.md / AGENTS.md / .cursorrules.</p>
-          </div>
-          <div class="mod" style="--mod-color:var(--critical-strong)">
-            <div class="head"><span class="name">mcpconfigimplant</span><span class="badge impl">Implant</span></div>
-            <p class="desc">Add a malicious MCP server entry to a client config (.cursor/mcp.json, etc).</p>
-          </div>
-          <div class="mod" style="--mod-color:var(--warn)">
-            <div class="head"><span class="name">embeddinginvert</span><span class="badge extr">Extract</span></div>
-            <p class="desc">Detect fine-tune training signals via embedding-layer outlier analysis on GGUF.</p>
-          </div>
+        <div class="stats">
+          <div class="stat"><div class="num">8</div><div class="lab">Service planes covered</div><div class="sub">client &rarr; frontend, end to end</div></div>
+          <div class="stat"><div class="num">22</div><div class="lab">Self-registering modules</div><div class="sub">+ the protoscan discovery engine</div></div>
+          <div class="stat"><div class="num">8</div><div class="lab">Offensive action types</div><div class="sub">scan &middot; discover &middot; fingerprint &middot; enumerate &middot; loot &middot; extract &middot; poison &middot; implant</div></div>
+          <div class="stat"><div class="num">12</div><div class="lab">AI-client config formats</div><div class="sub">Claude &middot; Cursor &middot; VS Code &middot; Windsurf &middot; Zed &middot; Kiro&hellip;</div></div>
+          <div class="stat"><div class="num">25</div><div class="lab">Graph node labels</div><div class="sub">30 edge kinds &middot; 15 post-processors</div></div>
+          <div class="stat"><div class="num">19</div><div class="lab">Prebuilt attack-path queries</div><div class="sub">credential-chain &middot; rug-pull &middot; exfil-routes&hellip;</div></div>
+          <div class="stat"><div class="num">35</div><div class="lab">Detection rules</div><div class="sub">+ 8 fingerprint rules</div></div>
+          <div class="stat"><div class="num">~9.4</div><div class="lab">MiB static collector</div><div class="sub">no DB/UI/server deps &middot; offline by default</div></div>
         </div>
       </div>
     </section>
@@ -1833,49 +1904,31 @@
         <div class="section-head">
           <span class="eyebrow">Get started in 60 seconds</span>
           <h2>Two binaries. No daemons. No telemetry.</h2>
-          <p>The collector is single-binary, ~9 MiB stripped. The server runs Neo4j + Postgres locally and binds <code style="font-family:var(--font-mono);font-size:14px;color:var(--fg)">127.0.0.1:8080</code>. No application-layer auth — single-user by design.</p>
+          <p>Prerequisites: <b>Docker + Compose v2</b> &mdash; no Go, no Node.js, no <code style="font-family:var(--font-mono)">git&nbsp;clone</code>. The server runs from a prebuilt image and binds <code style="font-family:var(--font-mono);font-size:14px;color:var(--fg)">127.0.0.1:8080</code>; the collector is a single static binary, offline by default.</p>
         </div>
 
-        <div class="install-panels">
-          <div class="panel">
-            <h4>1. Stand up the server</h4>
-            <p>Docker Compose pulls Neo4j + Postgres + UI. Binds <code style="font-family:var(--font-mono)">127.0.0.1:8080</code>.</p>
-<pre><span class="cmt"># one command, no git clone needed</span>
-curl -sSfL <span class="acc">https://raw.githubusercontent.com/adithyan-ak/agenthound/main/docker/docker-compose.public.yml</span> \
-  | docker compose -f - -p agenthound up -d</pre>
+        <div class="cmd-list">
+          <div class="cmd-step">
+            <div class="cap"><span class="n">1</span><h4>Start the analysis server</h4><span>Neo4j + Postgres + UI &middot; binds 127.0.0.1:8080</span></div>
+            <div class="cmd-row"><span class="pmt">$</span><code>curl -sSfL <span class="acc">https://raw.githubusercontent.com/adithyan-ak/agenthound/main/docker/docker-compose.public.yml</span> | docker compose -f - -p agenthound up -d --wait</code><button class="copy-cmd" type="button" aria-label="Copy command"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>copy</span></button></div>
           </div>
-
-          <div class="panel">
-            <h4>2. Install the collector</h4>
-            <p>Single static binary, ~9 MiB. Linux, macOS, Windows.</p>
-<pre><span class="cmt"># one-liner</span>
-curl -sSfL <span class="acc">https://raw.githubusercontent.com/adithyan-ak/agenthound/main/install.sh</span> | sh
-
-<span class="cmt"># or via Go</span>
-go install github.com/adithyan-ak/agenthound/collector/cmd/agenthound@latest</pre>
+          <div class="cmd-step">
+            <div class="cap"><span class="n">2</span><h4>Install the collector</h4><span>single static binary, ~9 MiB &rarr; ~/.local/bin</span></div>
+            <div class="cmd-row"><span class="pmt">$</span><code>curl -sSfL <span class="acc">https://raw.githubusercontent.com/adithyan-ak/agenthound/main/install.sh</span> | sh</code><button class="copy-cmd" type="button" aria-label="Copy command"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>copy</span></button></div>
           </div>
-
-          <div class="panel">
-            <h4>3. Scan and open the graph</h4>
-            <p>One pipe streams the scan straight into the server. No tokens, no drag-drop, no extra flags.</p>
-<pre><span class="cmt"># local configs only — no network</span>
-agenthound scan <span class="acc">--config --output -</span> \
-  | curl --data-binary @- -H <span class="acc">"Content-Type: application/json"</span> \
-         <span class="acc">http://127.0.0.1:8080/api/v1/ingest</span>
-
-<span class="cmt"># network sweep — same pipe</span>
-agenthound scan <span class="acc">10.0.0.0/24</span> --engagement-id ENG-001 --output - \
-  | curl --data-binary @- -H <span class="acc">"Content-Type: application/json"</span> \
-         <span class="acc">http://127.0.0.1:8080/api/v1/ingest</span>
-
-<span class="cmt"># open the UI</span>
-open http://127.0.0.1:8080</pre>
+          <div class="cmd-step">
+            <div class="cap"><span class="n">3</span><h4>Scan and stream into the server</h4><span>no tokens, no drag-drop &middot; one pipe</span></div>
+            <div class="cmd-row"><span class="pmt">$</span><code>agenthound scan <span class="acc">--config --output -</span> | curl --data-binary @- -H <span class="acc">"Content-Type: application/json"</span> http://127.0.0.1:8080/api/v1/ingest</code><button class="copy-cmd" type="button" aria-label="Copy command"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>copy</span></button></div>
+          </div>
+          <div class="cmd-step">
+            <div class="cap"><span class="n">4</span><h4>Open the graph UI</h4><span>open on macOS, xdg-open on Linux</span></div>
+            <div class="cmd-row"><span class="pmt">$</span><code>open <span class="acc">http://127.0.0.1:8080</span></code><button class="copy-cmd" type="button" aria-label="Copy command"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>copy</span></button></div>
           </div>
         </div>
 
         <div class="cta-banner">
-          <h2>Map every path in your AI estate.</h2>
-          <p>Open source, Apache 2.0. Built for red teams running real engagements against real MCP/A2A deployments.</p>
+          <h2>Attack the whole agentic stack from one tool.</h2>
+          <p>Open source, Apache 2.0. Run the full offensive lifecycle, then prove every path. Built for red teams running real engagements against real MCP/A2A deployments.</p>
           <div class="cta-row">
             <a class="btn btn-primary" href="https://github.com/adithyan-ak/agenthound" rel="noopener" target="_blank">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.69 1.24 3.34.95.1-.74.4-1.24.73-1.53-2.55-.29-5.24-1.27-5.24-5.66 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.15 1.17.91-.25 1.89-.38 2.87-.39.97 0 1.95.13 2.87.39 2.18-1.48 3.14-1.17 3.14-1.17.62 1.58.23 2.75.11 3.04.74.8 1.18 1.82 1.18 3.07 0 4.4-2.69 5.36-5.25 5.65.41.36.78 1.07.78 2.16v3.2c0 .31.21.67.8.56 4.56-1.52 7.84-5.83 7.84-10.91C23.5 5.65 18.35.5 12 .5z"/></svg>
@@ -1900,15 +1953,16 @@ open http://127.0.0.1:8080</pre>
             <img class="brand-mark" src="/favicon-32x32.png" srcset="/favicon-32x32.png 1x, /android-chrome-192x192.png 2x" alt="" width="26" height="26" decoding="async" loading="lazy">
             <span class="brand-name"><b>agent</b><span>hound</span></span>
           </a>
-          <p class="foot-tag">BloodHound for AI agent infrastructure. Open source, Apache 2.0.</p>
-          <span class="kbd">v0.5.0</span>
+          <p class="foot-tag">A red team framework for AI agent infrastructure. Open source, Apache 2.0.</p>
+          <span class="kbd">v0.7.0</span>
         </div>
         <div>
           <h5>Product</h5>
           <ul>
-            <li><a href="#features">Features</a></li>
-            <li><a href="#verbs">Verbs</a></li>
-            <li><a href="#modules">Modules</a></li>
+            <li><a href="#stack">Coverage</a></li>
+            <li><a href="#verbs">Lifecycle</a></li>
+            <li><a href="#features">Capabilities</a></li>
+            <li><a href="#arsenal">Arsenal</a></li>
             <li><a href="#paths">Attack paths</a></li>
           </ul>
         </div>
@@ -1994,7 +2048,7 @@ open http://127.0.0.1:8080</pre>
       io.observe(grid);
     })();
 
-    /* ----- copy install command ----- */
+    /* ----- copy install command (hero strip) ----- */
     (function () {
       var btn = document.getElementById('copy-btn');
       if (!btn) return;
@@ -2006,6 +2060,23 @@ open http://127.0.0.1:8080</pre>
         var prev = span.textContent;
         span.textContent = 'copied';
         setTimeout(function () { span.textContent = prev; btn.classList.remove('is-copied'); }, 1400);
+      });
+    })();
+
+    /* ----- copy buttons on the install command rows ----- */
+    (function () {
+      document.querySelectorAll('.copy-cmd').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var code = btn.parentNode.querySelector('code');
+          if (!code) return;
+          var cmd = code.textContent.trim();
+          navigator.clipboard && navigator.clipboard.writeText(cmd);
+          btn.classList.add('is-copied');
+          var span = btn.querySelector('span');
+          var prev = span.textContent;
+          span.textContent = 'copied';
+          setTimeout(function () { span.textContent = prev; btn.classList.remove('is-copied'); }, 1400);
+        });
       });
     })();
 

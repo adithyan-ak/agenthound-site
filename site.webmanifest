@@ -1,7 +1,7 @@
 {
   "name": "AgentHound",
   "short_name": "AgentHound",
-  "description": "Attack-path discovery for AI agent infrastructure. BloodHound for MCP/A2A.",
+  "description": "Open-source red team framework for AI agent infrastructure — run the full offensive lifecycle across the agentic stack, then prove every attack path in Neo4j.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
