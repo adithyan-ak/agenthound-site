@@ -19,7 +19,7 @@
 
   <title>AgentHound: Red team framework for AI agent infrastructure</title>
   <meta name="description" content="Open-source red team framework for AI agent infrastructure. Run the full offensive lifecycle across the agentic stack (MCP, A2A, gateways, inference, vector stores), then prove every attack path in one Neo4j graph.">
-  <meta name="keywords" content="agenthound, red team framework, ai agent security, ai red team, offensive security, agentic security, mcp security, a2a security, llm security, ai infrastructure security, credential looting, model extraction, model inversion, tool poisoning, prompt injection, config implant, attack path, neo4j, mcp, a2a, litellm, ollama, vllm, qdrant, mlflow, jupyter, open webui, langserve, bloodhound">
+  <meta name="keywords" content="agenthound, red team framework, ai agent security, ai red team, offensive security, agentic security, mcp security, a2a security, llm security, ai infrastructure security, credential looting, model inventory, model inversion, tool poisoning, prompt injection, config implant, attack path, neo4j, mcp, a2a, litellm, ollama, vllm, qdrant, mlflow, jupyter, open webui, langserve, bloodhound">
   <meta name="author" content="Adithyan AK">
   <meta name="application-name" content="AgentHound">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
@@ -30,7 +30,7 @@
   <meta property="og:site_name" content="AgentHound">
   <meta property="og:url" content="https://agenthound.io/">
   <meta property="og:title" content="AgentHound: Red team framework for AI agent infrastructure">
-  <meta property="og:description" content="One open-source tool runs the full offensive lifecycle (recon, credential looting, model &amp; weight exfiltration, inversion, tool poisoning, config implants) across the entire agentic stack, then proves the attack paths in one graph.">
+  <meta property="og:description" content="One open-source tool runs the full offensive lifecycle (recon, credential looting, modelfile, system-prompt and fine-tune inventory, inversion, tool poisoning, config implants) across the entire agentic stack, then proves the attack paths in one graph.">
   <meta property="og:image" content="https://agenthound.io/og.png">
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
@@ -63,11 +63,11 @@
         "name": "AgentHound",
         "url": "https://agenthound.io/",
         "image": "https://agenthound.io/og.png",
-        "description": "Open-source red team framework for AI agent infrastructure. Runs the full offensive lifecycle (recon, fingerprinting, credential looting, model & weight exfiltration, model inversion, tool/instruction poisoning, config implants) across MCP, A2A, model gateways, inference servers, vector stores, MLOps, notebooks and client configs, then computes cross-protocol attack paths in a Neo4j graph.",
+        "description": "Open-source red team framework for AI agent infrastructure. Runs the full offensive lifecycle (recon, fingerprinting, credential looting, modelfile, system-prompt and fine-tune inventory, model inversion, tool/instruction poisoning, config implants) across MCP, A2A, model gateways, inference servers, vector stores, MLOps, notebooks and client configs, then computes cross-protocol attack paths in a Neo4j graph.",
         "applicationCategory": "SecurityApplication",
         "applicationSubCategory": "Offensive security / red team framework",
         "operatingSystem": "Linux, macOS, Windows",
-        "softwareVersion": "0.7.0",
+        "softwareVersion": "1.0.1",
         "license": "https://www.apache.org/licenses/LICENSE-2.0",
         "downloadUrl": "https://github.com/adithyan-ak/agenthound/releases",
         "codeRepository": "https://github.com/adithyan-ak/agenthound",
@@ -76,8 +76,8 @@
           "Full-spectrum agentic attack-surface coverage (MCP, A2A, gateways, inference, vector stores, MLOps, notebooks, configs)",
           "Recon, fingerprinting and enumeration across 8 AI services",
           "Credential looting across the gateway and service plane",
-          "Model and weight exfiltration",
-          "GGUF model inversion / training-data residue extraction",
+          "Ollama modelfile, system-prompt and fine-tune inventory",
+          "Local GGUF model inversion / training-data residue extraction",
           "Reversible tool and instruction poisoning",
           "Config implant persistence",
           "Cross-protocol attack-path analysis in Neo4j (CAN_REACH)",
@@ -107,7 +107,7 @@
   <!-- Fonts: Inter for UI, JetBrains Mono for code -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
 
   <style>
     /* ---------- Design tokens - Deep Space Security Operations ---------- */
@@ -1418,6 +1418,7 @@
       .span-rail { height: 40px; }
       .span-rail span { writing-mode: horizontal-tb; transform: none; }
       .plane { grid-template-columns: 1fr; gap: 10px; }
+      .card .diagram .pill { max-width: 100%; white-space: normal; overflow-wrap: anywhere; }
     }
 
     /* ---------- Arsenal stat grid ---------- */
@@ -1501,9 +1502,9 @@
     <section class="hero">
       <div class="wrap hero-grid">
         <div>
-          <a class="hero-pill" href="https://github.com/adithyan-ak/agenthound/releases" rel="noopener" target="_blank" aria-label="Latest release: v0.7.0">
+          <a class="hero-pill" href="https://github.com/adithyan-ak/agenthound/releases/tag/v1.0.1" rel="noopener" target="_blank" aria-label="Latest release: v1.0.1">
             <span class="pulse" aria-hidden="true"></span>
-            <span class="tag">v0.7.0</span>
+            <span class="tag">v1.0.1</span>
             <span>live scan &amp; discover progress output</span>
             <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
@@ -1513,7 +1514,7 @@
           </h1>
 
           <p class="hero-sub">
-            One open-source tool runs the <b>full offensive lifecycle</b> (recon, credential looting, model &amp; weight exfiltration, inversion, tool/instruction poisoning, config implants) across <b>every layer of the agentic stack</b>: MCP, A2A, gateways, inference servers, vector stores and notebooks. Then proves the attack paths in one Neo4j graph.
+            One open-source tool runs the <b>full offensive lifecycle</b> (recon, credential looting, modelfile / system-prompt / fine-tune inventory, inversion, tool/instruction poisoning, config implants) across <b>every layer of the agentic stack</b>: MCP, A2A, gateways, inference servers, vector stores and notebooks. Then proves the attack paths in one Neo4j graph.
           </p>
 
           <div class="cta-row">
@@ -1529,7 +1530,7 @@
 
           <div class="install-strip" id="install-strip">
             <span class="label">$</span>
-            <code id="install-cmd">curl -sSfL https://raw.githubusercontent.com/adithyan-ak/agenthound/main/install.sh | sh</code>
+            <code id="install-cmd">curl -sSfL https://raw.githubusercontent.com/adithyan-ak/agenthound/v1.0.1/install.sh | AGENTHOUND_VERSION=v1.0.1 sh</code>
             <button class="copy-btn" id="copy-btn" aria-label="Copy install command">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <span>copy</span>
@@ -1538,7 +1539,7 @@
 
           <div class="hero-meta">
             <span><span class="dot ok"></span>Apache 2.0</span>
-            <span><span class="dot"></span>Single ~9.4 MiB collector</span>
+            <span><span class="dot"></span>Single ~10.6 MiB collector</span>
             <span><span class="dot"></span>8 service planes</span>
             <span><span class="dot"></span>22 modules</span>
           </div>
@@ -1613,7 +1614,7 @@
               </div>
               <div class="plane" style="--c:var(--ollama)">
                 <div class="pname"><span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="4" width="16" height="16" rx="3"/><circle cx="9" cy="10" r="1.3"/><circle cx="15" cy="10" r="1.3"/><path d="M8 15h8"/></svg></span><span class="pl">Inference<small>plane</small></span></div>
-                <div class="chips"><span class="chip t">Ollama (weights!)</span><span class="chip t">vLLM</span><span class="chip m">ollamaloot</span><span class="chip m">vllmfp</span></div>
+                <div class="chips"><span class="chip t">Ollama (model inventory)</span><span class="chip t">vLLM</span><span class="chip m">ollamaloot</span><span class="chip m">vllmfp</span></div>
               </div>
               <div class="plane" style="--c:var(--qdrant)">
                 <div class="pname"><span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/></svg></span><span class="pl">Vector / RAG<small>plane</small></span></div>
@@ -1669,7 +1670,7 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-4z"/><path d="m9 12 2 2 4-4"/></svg>
             </div>
             <h4>loot</h4>
-            <p>Read-only HTTP credential extraction (LiteLLM master key, Ollama).</p>
+            <p>Read-only HTTP credential and model-metadata inventory (LiteLLM, Ollama).</p>
           </div>
           <div class="verb">
             <span class="num">04</span>
@@ -1701,7 +1702,7 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v18"/><path d="m6 7 6 4 6-4"/><path d="m6 13 6 4 6-4"/></svg>
             </div>
             <h4>extract</h4>
-            <p>Embedding-inversion on GGUF weights. Detect fine-tune training signals.</p>
+            <p>Embedding inversion on locally obtained GGUF weights. Detect fine-tune training signals.</p>
           </div>
         </div>
       </div>
@@ -1730,7 +1731,7 @@
           <div class="schema">
             <div class="schema-head">
               <h4>Graph schema, in motion</h4>
-              <span class="meta">25 node labels · 30 edges</span>
+              <span class="meta">23 node labels · 32 edge kinds</span>
             </div>
             <div class="schema-body">
               <div class="schema-row">
@@ -1778,25 +1779,25 @@
         <div class="section-head">
           <span class="eyebrow">The offensive primitives</span>
           <h2>The capabilities that make it a framework.</h2>
-          <p>Weight extraction, model inversion, credential looting across gateways, tool and instruction poisoning, config implants, RAG enumeration, and the cross-protocol graph analysis that ties the loot together at the end.</p>
+          <p>Modelfile, system-prompt and fine-tune inventory, local model inversion, credential looting across gateways, tool and instruction poisoning, config implants, RAG enumeration, and the cross-protocol graph analysis that ties the loot together at the end.</p>
         </div>
 
         <div class="bento">
-          <!-- Marquee: model & weight exfiltration -->
+          <!-- Marquee: Ollama model intelligence -->
           <article class="card span-4">
             <span class="severity crit">Critical</span>
             <div class="ico">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M5 21h14"/></svg>
             </div>
-            <h3>Model &amp; weight exfiltration</h3>
-            <p>Direct theft of the model itself, not just metadata. The Ollama looter streams <b style="color:var(--text-1);font-weight:500">raw model weights</b> to disk (plus modelfiles, templates, and system prompts) anonymously, since default Ollama ships with no auth. One of the most impactful things the tool does.</p>
+            <h3>Ollama model intelligence</h3>
+            <p>The Ollama looter inventories model names, digests, sizes, modelfiles, templates and system prompts, and flags likely fine-tunes through the HTTP API. Raw model weights are not available through Ollama's HTTP API; obtaining them requires authorized filesystem access to the Ollama model store.</p>
             <div class="diagram" aria-hidden="true">
               <div class="row">
                 <span class="pill"><span class="sw" style="background:var(--ollama)"></span>Ollama</span>
                 <span class="arrow">→</span>
-                <span class="pill"><code style="color:var(--text-2)">GET /api/blobs/&lt;digest&gt;</code></span>
+                <span class="pill"><code style="color:var(--text-2)">GET /api/tags · POST /api/show</code></span>
                 <span class="arrow">→</span>
-                <span class="pill" style="border-color: rgba(255,214,0,0.45); color: var(--warn)">model.bin · multi-GiB</span>
+                <span class="pill" style="border-color: rgba(255,214,0,0.45); color: var(--warn)">modelfile · system prompt · fine-tune signal</span>
               </div>
               <div class="row label" style="margin-top:6px">
                 emits <span style="color: var(--accent)">AIModel</span>&nbsp;node with modelfile&nbsp;<code style="color:var(--text-1)">value_hash</code>
@@ -1816,12 +1817,12 @@
 
           <!-- Model inversion -->
           <article class="card span-2">
-            <span class="severity med">v0.5 PoC</span>
+            <span class="severity med">Experimental</span>
             <div class="ico">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18"/><path d="m6 7 6 4 6-4"/><path d="m6 13 6 4 6-4"/></svg>
             </div>
             <h3>Model inversion</h3>
-            <p>A pure-Go GGUF parser runs statistical inversion on the embedding matrix to recover likely fine-tune vocabulary tokens. Loot the weights, then invert locally.</p>
+            <p>A pure-Go GGUF parser runs statistical inversion on the embedding matrix to recover likely fine-tune vocabulary tokens. Provide a GGUF copied through authorized filesystem access, then invert locally.</p>
           </article>
 
           <!-- Tool & instruction poisoning -->
@@ -1890,10 +1891,10 @@
           <div class="stat"><div class="num">22</div><div class="lab">Self-registering modules</div><div class="sub">+ the protoscan discovery engine</div></div>
           <div class="stat"><div class="num">8</div><div class="lab">Offensive action types</div><div class="sub">scan &middot; discover &middot; fingerprint &middot; enumerate &middot; loot &middot; extract &middot; poison &middot; implant</div></div>
           <div class="stat"><div class="num">12</div><div class="lab">AI-client config formats</div><div class="sub">Claude &middot; Cursor &middot; VS Code &middot; Windsurf &middot; Zed &middot; Kiro&hellip;</div></div>
-          <div class="stat"><div class="num">25</div><div class="lab">Graph node labels</div><div class="sub">30 edge kinds &middot; 15 post-processors</div></div>
+          <div class="stat"><div class="num">23</div><div class="lab">Graph node labels</div><div class="sub">32 edge kinds &middot; 15 post-processors</div></div>
           <div class="stat"><div class="num">19</div><div class="lab">Prebuilt attack-path queries</div><div class="sub">credential-chain &middot; rug-pull &middot; exfil-routes&hellip;</div></div>
           <div class="stat"><div class="num">35</div><div class="lab">Detection rules</div><div class="sub">+ 8 fingerprint rules</div></div>
-          <div class="stat"><div class="num">~9.4</div><div class="lab">MiB static collector</div><div class="sub">no DB/UI/server deps &middot; offline by default</div></div>
+          <div class="stat"><div class="num">~10.6</div><div class="lab">MiB static collector</div><div class="sub">no DB/UI/server deps &middot; offline by default</div></div>
         </div>
       </div>
     </section>
@@ -1910,11 +1911,11 @@
         <div class="cmd-list">
           <div class="cmd-step">
             <div class="cap"><span class="n">1</span><h4>Start the analysis server</h4><span>Neo4j + Postgres + UI &middot; binds 127.0.0.1:8080</span></div>
-            <div class="cmd-row"><span class="pmt">$</span><code>curl -sSfL <span class="acc">https://raw.githubusercontent.com/adithyan-ak/agenthound/main/docker/docker-compose.public.yml</span> | docker compose -f - -p agenthound up -d --wait</code><button class="copy-cmd" type="button" aria-label="Copy command"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>copy</span></button></div>
+            <div class="cmd-row"><span class="pmt">$</span><code>curl -sSfL <span class="acc">https://raw.githubusercontent.com/adithyan-ak/agenthound/v1.0.1/docker/docker-compose.public.yml</span> | docker compose -f - -p agenthound up -d --wait</code><button class="copy-cmd" type="button" aria-label="Copy command"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>copy</span></button></div>
           </div>
           <div class="cmd-step">
-            <div class="cap"><span class="n">2</span><h4>Install the collector</h4><span>single static binary, ~9 MiB &rarr; ~/.local/bin</span></div>
-            <div class="cmd-row"><span class="pmt">$</span><code>curl -sSfL <span class="acc">https://raw.githubusercontent.com/adithyan-ak/agenthound/main/install.sh</span> | sh</code><button class="copy-cmd" type="button" aria-label="Copy command"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>copy</span></button></div>
+            <div class="cap"><span class="n">2</span><h4>Install the collector</h4><span>single static binary, ~10.6 MiB &rarr; ~/.local/bin</span></div>
+            <div class="cmd-row"><span class="pmt">$</span><code>curl -sSfL <span class="acc">https://raw.githubusercontent.com/adithyan-ak/agenthound/v1.0.1/install.sh</span> | <span class="acc">AGENTHOUND_VERSION=v1.0.1</span> sh</code><button class="copy-cmd" type="button" aria-label="Copy command"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>copy</span></button></div>
           </div>
           <div class="cmd-step">
             <div class="cap"><span class="n">3</span><h4>Scan and stream into the server</h4><span>no tokens, no drag-drop &middot; one pipe</span></div>
@@ -1954,7 +1955,7 @@
             <span class="brand-name"><b>agent</b><span>hound</span></span>
           </a>
           <p class="foot-tag">A red team framework for AI agent infrastructure. Open source, Apache 2.0.</p>
-          <span class="kbd">v0.7.0</span>
+          <span class="kbd">v1.0.1</span>
         </div>
         <div>
           <h5>Product</h5>
