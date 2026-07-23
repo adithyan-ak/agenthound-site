@@ -1,7 +1,8 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<title>AgentHound — The red team framework for AI agent infrastructure</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
@@ -117,7 +118,7 @@
   var nodes=[
     {id:'claude',label:'claude-desktop',kind:'agent',r:42,x:150,y:96},
     {id:'mcp',   label:'mcp-fs',        kind:'mcp',  r:42,x:118,y:300},
-    {id:'cred',  label:'sk-•••',        kind:'cred', r:28,x:300,y:300},
+    {id:'cred',  label:'upstream-key',  kind:'cred', r:28,x:300,y:300},
     {id:'gw',    label:'litellm-prod',  kind:'gw',   r:42,x:470,y:300},
     {id:'tool',  label:'execute_sql',   kind:'tool', r:34,x:300,y:486}
   ];
@@ -150,13 +151,12 @@
   }
   edge(bot(byId.claude),top(byId.mcp),{stroke:'rgba(234,235,238,.16)','stroke-width':'1.3'});
   edge(bot(byId.mcp),top(byId.tool),{stroke:'rgba(234,235,238,.16)','stroke-width':'1.3'});
-  credEdge(byId.mcp,byId.cred);
   credEdge(byId.cred,byId.gw);
 
-  // CAN_REACH arc: claude -> through cred -> execute_sql
-  var s=lat(byId.claude,'r'),t=top(byId.tool),via=byId.cred;
+  // CAN_REACH composite edge: AgentInstance -> upstream Credential
+  var s=lat(byId.claude,'r'),t=top(byId.cred);
   var reach=el('path',{fill:'none',stroke:'#ff7a00','stroke-width':'2.6','stroke-linecap':'round','stroke-dasharray':'6 6','marker-end':'url(#ah)',filter:'url(#glow)',
-    d:'M '+s.x+' '+s.y+' C '+(via.x+70)+' '+(s.y+64)+' '+via.x+' '+(via.y+34)+' '+t.x+' '+(t.y-5)});
+    d:'M '+s.x+' '+s.y+' C 236 104 298 175 '+t.x+' '+t.y});
   gE.appendChild(reach);
 
   // node icons (compact)
@@ -184,9 +184,11 @@
 
   // CAN_REACH annotation
   var an=el('g',{});
-  var ax=346,ay=150;
-  an.appendChild(el('text',{x:ax,y:ay,fill:'#ff7a00','font-family':'JetBrains Mono,monospace','font-size':'17','font-weight':'600','letter-spacing':'.6px'})).textContent='CAN_REACH';
-  an.appendChild(el('text',{x:ax,y:ay+20,fill:'rgba(238,240,243,.62)','font-family':'JetBrains Mono,monospace','font-size':'12.5','letter-spacing':'.3px'})).textContent='cross-vector chain';
+  var ax=400,ay=105;
+  an.appendChild(el('path',{d:'M 261 151 H 320 V 98 H 345',fill:'none',stroke:'rgba(255,122,0,.72)','stroke-width':'1.2','stroke-dasharray':'3 4','stroke-linecap':'round','stroke-linejoin':'round'}));
+  an.appendChild(el('circle',{cx:'261',cy:'151',r:'2.6',fill:'#ff7a00'}));
+  an.appendChild(el('text',{x:ax,y:ay,fill:'#ff7a00','font-family':'JetBrains Mono,monospace','font-size':'17','font-weight':'600','letter-spacing':'.6px','text-anchor':'middle'})).textContent='CAN_REACH';
+  an.appendChild(el('text',{x:ax,y:ay+22,fill:'rgba(238,240,243,.62)','font-family':'JetBrains Mono,monospace','font-size':'12.5','letter-spacing':'.3px','text-anchor':'middle'})).textContent='cross-vector · via matched value_hash';
   svg.appendChild(an);
 })();
 </script>
