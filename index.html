@@ -474,13 +474,21 @@
     }
     .hero-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
-      gap: 56px;
+      grid-template-columns: minmax(0, .9fr) minmax(0, 1.15fr);
+      gap: 48px;
       align-items: center;
+      max-width: 1400px;
     }
-    @media (max-width: 980px) {
+    .hero-copy,
+    .hero-visual { min-width: 0; }
+    .hero-visual { align-self: center; }
+    @media (max-width: 1080px) {
       .hero { padding: 72px 0 56px; }
-      .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 48px; }
+      .hero-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 48px;
+        max-width: 760px;
+      }
     }
     @media (max-width: 560px) {
       .hero { padding: 40px 0 32px; }
@@ -673,43 +681,20 @@
       box-shadow: 0 0 0 0 rgba(0, 255, 133, 0.55);
       animation: livePulse 2s ease-out infinite;
     }
-    .authorized-note {
-      display: flex;
-      align-items: flex-start;
-      gap: 9px;
-      max-width: 560px;
-      margin-top: 22px;
-      padding: 10px 12px;
-      border: 1px solid rgba(255,214,0,0.34);
-      border-radius: 8px;
-      background: rgba(255,214,0,0.06);
-      color: var(--text-3);
-      font-family: var(--font-mono);
-      font-size: 11.5px;
-      line-height: 1.5;
-    }
-    .authorized-note::before {
-      content: "!";
-      color: var(--warn);
-      font-weight: 700;
-      flex: 0 0 auto;
-    }
-    .authorized-note strong { color: var(--warn); }
-
     /* ---------- Hero graph stage ---------- */
     .stage {
       position: relative;
-      aspect-ratio: 1 / 1;
-      max-width: 720px;
+      aspect-ratio: 660 / 560;
+      max-width: 760px;
       margin-left: auto;
       width: 100%;
       overflow: hidden;
     }
-    @media (max-width: 980px) {
-      .stage { margin: 0 auto; max-width: 640px; }
+    @media (max-width: 1080px) {
+      .stage { margin: 0 auto; max-width: 760px; }
     }
     @media (max-width: 560px) {
-      .stage { aspect-ratio: 1 / 1; max-width: 100%; }
+      .stage { aspect-ratio: 660 / 560; max-width: 100%; }
     }
     #graph-svg {
       position: absolute;
@@ -726,7 +711,7 @@
       justify-content: center;
       gap: 4px 14px;
       margin: 18px auto 0;
-      max-width: 560px;
+      max-width: 660px;
       font-family: var(--font-mono);
       font-size: 10.5px;
       letter-spacing: .04em;
@@ -1534,10 +1519,8 @@
     .stat .sub { margin-top: 5px; font-size: 11.5px; color: var(--text-4); line-height: 1.5; }
 
     /* ---------- Install command rows (one-line, scrollable, copy) ---------- */
-    .install-note { font-family: var(--font-mono); font-size: 12px; color: var(--text-3); margin: 0 0 22px; padding: 12px 14px; border: 1px dashed var(--line-strong); border-radius: 10px; background: var(--surface-1); }
-    .install-note b { color: var(--text-1); font-weight: 600; }
-    .cmd-list { display: flex; flex-direction: column; gap: 12px; min-width: 0; max-width: 100%; }
-    .cmd-step { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; min-width: 0; max-width: 100%; }
+    .cmd-list { display: flex; flex-direction: column; gap: 24px; min-width: 0; max-width: 100%; }
+    .cmd-step { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; min-width: 0; max-width: 100%; }
     .cmd-step .cap { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px 10px; min-width: 0; }
     .cmd-step .cap .n { font-family: var(--font-mono); font-size: 11px; color: var(--accent); border: 1px solid var(--accent-line); background: var(--accent-tint); border-radius: 6px; padding: 2px 8px; flex: 0 0 auto; }
     .cmd-step .cap h3 { margin: 0; font-size: 14px; color: var(--text-1); font-weight: 500; }
@@ -1553,7 +1536,6 @@
     .copy-cmd:hover { color: var(--text-1); border-color: var(--accent-line); }
     .copy-cmd.is-copied { color: var(--ok); border-color: rgba(0,255,133,.4); }
     .copy-cmd svg { width: 13px; height: 13px; }
-    .install-note a { color: var(--accent-2); text-decoration: underline; text-underline-offset: 2px; }
     .copy-status {
       position: absolute;
       width: 1px;
@@ -1622,7 +1604,7 @@
   <main id="main-content" tabindex="-1">
     <section class="hero">
       <div class="wrap hero-grid">
-        <div>
+        <div class="hero-copy">
           <a class="hero-pill" href="https://github.com/adithyan-ak/agenthound/releases/tag/v1.0.1" rel="noopener" target="_blank" aria-label="Latest release: v1.0.1">
             <span class="pulse" aria-hidden="true"></span>
             <span class="tag">v1.0.1</span>
@@ -1664,13 +1646,12 @@
             <span><span class="dot"></span>8 service planes</span>
             <span><span class="dot"></span>22 modules</span>
           </div>
-          <p class="authorized-note"><span><strong>Authorized use only.</strong> Run AgentHound only against infrastructure you own or are explicitly authorized to assess.</span></p>
         </div>
 
         <!-- Live force-directed graph (frameless) -->
-        <div>
+        <div class="hero-visual">
           <div class="stage" aria-hidden="true">
-            <svg id="graph-svg" viewBox="0 0 600 600" preserveAspectRatio="xMidYMid meet"></svg>
+            <svg id="graph-svg" viewBox="0 0 660 560" preserveAspectRatio="xMidYMid meet"></svg>
           </div>
           <div class="stage-key" aria-hidden="true">
             <span><span class="sw" style="background:var(--accent-2)"></span>Agent</span>
@@ -2043,10 +2024,6 @@
           <p>Prerequisites: <b>Docker + Compose v2</b> &mdash; no Go, no Node.js, no <code style="font-family:var(--font-mono)">git&nbsp;clone</code>. The server runs from a prebuilt image and binds <code style="font-family:var(--font-mono);font-size:14px;color:var(--fg)">127.0.0.1:8080</code>; the collector is a single static binary, offline by default and sends no product telemetry.</p>
         </div>
 
-        <p class="install-note"><b>Platforms:</b> the shell installer supports macOS and Linux. Windows users can download signed binaries from the <a href="https://github.com/adithyan-ak/agenthound/releases/tag/v1.0.1" rel="noopener" target="_blank">v1.0.1 release</a>.</p>
-        <p class="install-note"><b>Security boundary:</b> the analysis server is single-user and has no application-layer authentication. Keep it on loopback; use a VPN or SSH tunnel for authorized remote access.</p>
-        <p class="install-note"><b>Upgrading an older deployment?</b> Back up PostgreSQL and Neo4j together. The current ingest-v4 storage boundary requires fresh volumes when moving from ingest v3; preserve the old deployment read-only and follow the <a href="https://docs.agenthound.io/operator/deployment/#upgrades" rel="noopener" target="_blank">deployment upgrade guide</a>.</p>
-
         <div class="cmd-list">
           <div class="cmd-step">
             <div class="cap"><span class="n">1</span><h3>Start the analysis server</h3><span>Neo4j + Postgres + UI &middot; v1.0.1 &middot; binds 127.0.0.1:8080</span></div>
@@ -2275,11 +2252,8 @@
       var svg = document.getElementById('graph-svg');
       if (!svg) return;
       var SVG_NS = 'http://www.w3.org/2000/svg';
-      var W = 600, H = 600;
-      // Lateral padding so leftmost/rightmost hex labels stay inside the viewBox
-      // when the SVG is clipped on phones.
-      var PAD_X = 60;
-      svg.setAttribute('viewBox', (-PAD_X) + ' 0 ' + (W + PAD_X * 2) + ' ' + H);
+      var W = 660, H = 560;
+      svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
       svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
 
       // Per-kind chrome (matches agenthound-server data viz palette)
@@ -2302,21 +2276,21 @@
 
       var nodes = [
         // top row - agents
-        { id:'claude', label:'claude-desktop', kind:'agent',   r:hexR_lg, x:172, y: 96 },
-        { id:'cursor', label:'cursor',          kind:'agent',   r:hexR_lg, x:428, y: 96 },
+        { id:'claude', label:'claude-desktop', kind:'agent',   r:hexR_lg, x:140, y: 82 },
+        { id:'cursor', label:'cursor',          kind:'agent',   r:hexR_lg, x:510, y: 82 },
 
         // middle row - servers + cred + gateway
-        { id:'mcpFs', label:'mcp-fs',           kind:'mcp',     r:hexR_lg, x: 96, y:286 },
-        { id:'pg',    label:'postgres-prod',    kind:'mcp',     r:hexR_lg, x:300, y:286 },
-        { id:'cred',  label:'upstream-key',      kind:'cred',    r:hexR_sm, x:412, y:286 },
-        { id:'lite',  label:'litellm-prod',     kind:'litellm', r:hexR_lg, x:512, y:286 },
+        { id:'mcpFs', label:'mcp-fs',           kind:'mcp',     r:hexR_lg, x: 80, y:280 },
+        { id:'pg',    label:'postgres-prod',    kind:'mcp',     r:hexR_lg, x:270, y:280 },
+        { id:'cred',  label:'upstream-key',     kind:'cred',    r:hexR_sm, x:440, y:280 },
+        { id:'lite',  label:'litellm-prod',     kind:'litellm', r:hexR_lg, x:575, y:280 },
 
         // bottom row - tools
-        { id:'readf', label:'read_file',        kind:'tool',    r:hexR_md, x: 96, y:476 },
-        { id:'lsdir', label:'list_dir',         kind:'tool',    r:hexR_md, x:198, y:476 },
-        { id:'getsc', label:'get_schema',       kind:'tool',    r:hexR_md, x:300, y:476 },
-        { id:'execq', label:'execute_sql',      kind:'tool',    r:hexR_md, x:402, y:476 },
-        { id:'embed', label:'embed',            kind:'tool',    r:hexR_md, x:512, y:476 }
+        { id:'readf', label:'read_file',        kind:'tool',    r:hexR_md, x: 80, y:470 },
+        { id:'lsdir', label:'list_dir',         kind:'tool',    r:hexR_md, x:195, y:470 },
+        { id:'getsc', label:'get_schema',       kind:'tool',    r:hexR_md, x:310, y:470 },
+        { id:'execq', label:'execute_sql',      kind:'tool',    r:hexR_md, x:440, y:470 },
+        { id:'embed', label:'embed',            kind:'tool',    r:hexR_md, x:575, y:470 }
       ];
       // remember origin for jitter
       nodes.forEach(function(n){ n.ox = n.x; n.oy = n.y; n._p = Math.random()*Math.PI*2; });
@@ -2580,22 +2554,30 @@
       var annotTitle = svgEl('text', {
         id: 'reach-annotation-title',
         fill: '#ff7a00',
+        stroke: 'var(--surface-0)',
+        'stroke-width': '6',
+        'paint-order': 'stroke',
+        'stroke-linejoin': 'round',
         'font-family': 'JetBrains Mono, ui-monospace, monospace',
         'font-size': '14',
         'letter-spacing': '0.06em',
         'font-weight': '500',
-        'text-anchor': 'middle'
+        'text-anchor': 'start'
       });
       annotTitle.textContent = 'CAN_REACH';
       var annotSub = svgEl('text', {
         id: 'reach-annotation-subtitle',
         fill: 'rgba(234,235,238,0.65)',
+        stroke: 'var(--surface-0)',
+        'stroke-width': '6',
+        'paint-order': 'stroke',
+        'stroke-linejoin': 'round',
         'font-family': 'JetBrains Mono, ui-monospace, monospace',
         'font-size': '12',
         'letter-spacing': '0.02em',
-        'text-anchor': 'middle'
+        'text-anchor': 'start'
       });
-      annotSub.textContent = 'cross-vector · via matched value_hash';
+      annotSub.textContent = 'via matched value_hash';
       gAnnot.appendChild(annotLeader);
       gAnnot.appendChild(annotDot);
       gAnnot.appendChild(annotTitle);
@@ -2623,10 +2605,10 @@
         var dst = byId['cred'];
         var s = lateralPort(src, 'right');
         var t = topPort(dst);
-        var c1x = s.x + 105;
-        var c1y = s.y + 18;
-        var c2x = t.x - 24;
-        var c2y = t.y - 82;
+        var c1x = s.x + 112;
+        var c1y = s.y + 10;
+        var c2x = t.x - 34;
+        var c2y = t.y - 92;
         reachPath.setAttribute('d',
           'M ' + s.x + ' ' + s.y +
           ' C ' + c1x + ' ' + c1y +
@@ -2634,10 +2616,9 @@
           ' '   + t.x + ' ' + t.y
         );
 
-        var anchor = reachPath.getPointAtLength(reachPath.getTotalLength() * 0.52);
-        var labelHalf = Math.max(annotTitle.getComputedTextLength(), annotSub.getComputedTextLength()) / 2;
-        var titleX = Math.max(-PAD_X + labelHalf + 12, Math.min(W + PAD_X - labelHalf - 12, anchor.x));
-        var titleY = Math.max(34, anchor.y - 58);
+        var anchor = reachPath.getPointAtLength(reachPath.getTotalLength() * 0.50);
+        var titleX = 410;
+        var titleY = 184;
         annotTitle.setAttribute('x', titleX);
         annotTitle.setAttribute('y', titleY);
         annotSub.setAttribute('x', titleX);
@@ -2646,7 +2627,9 @@
         annotDot.setAttribute('cy', anchor.y);
         annotLeader.setAttribute('d',
           'M ' + anchor.x + ' ' + anchor.y +
-          ' L ' + titleX + ' ' + (titleY + 25)
+          ' L 392 ' + anchor.y +
+          ' L 392 ' + (titleY - 5) +
+          ' L ' + (titleX - 10) + ' ' + (titleY - 5)
         );
       }
       render();
