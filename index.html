@@ -1633,7 +1633,7 @@
 
           <div class="install-strip" id="install-strip">
             <span class="label">$</span>
-            <code id="install-cmd">curl -sSfL https://raw.githubusercontent.com/adithyan-ak/agenthound/v1.0.1/install.sh | AGENTHOUND_VERSION=v1.0.1 sh</code>
+            <code id="install-cmd">curl -sSfL https://raw.githubusercontent.com/adithyan-ak/agenthound/main/install.sh | sh</code>
             <button class="copy-btn" id="copy-btn" type="button" aria-label="Copy install command">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <span>copy</span>
@@ -2026,23 +2026,20 @@
 
         <div class="cmd-list">
           <div class="cmd-step">
-            <div class="cap"><span class="n">1</span><h3>Start the analysis server</h3><span>Neo4j + Postgres + UI &middot; v1.0.1 &middot; binds 127.0.0.1:8080</span></div>
-            <div class="cmd-row"><span class="pmt">$</span><code>curl -sSfL <span class="acc">https://raw.githubusercontent.com/adithyan-ak/agenthound/v1.0.1/docker/docker-compose.public.yml</span> | sed <span class="acc">'s|agenthound-server:latest|agenthound-server:1.0.1|'</span> | docker compose -f - -p agenthound up -d --wait</code><button class="copy-cmd" type="button" aria-label="Copy command"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>copy</span></button></div>
+            <div class="cap"><span class="n">1</span><h3>Start the analysis server</h3><span>Neo4j + Postgres + UI &middot; binds 127.0.0.1:8080</span></div>
+            <div class="cmd-row"><span class="pmt">$</span><code>curl -sSfL <span class="acc">https://raw.githubusercontent.com/adithyan-ak/agenthound/main/docker/docker-compose.public.yml</span> | docker compose -f - -p agenthound up -d --wait</code><button class="copy-cmd" type="button" aria-label="Copy command"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>copy</span></button></div>
           </div>
           <div class="cmd-step">
-            <div class="cap"><span class="n">2</span><h3>Install the collector</h3><span>single static binary, ~9.9 MiB &rarr; ~/.local/bin</span></div>
-            <div class="cmd-row"><span class="pmt">$</span><code>curl -sSfL <span class="acc">https://raw.githubusercontent.com/adithyan-ak/agenthound/v1.0.1/install.sh</span> | <span class="acc">AGENTHOUND_VERSION=v1.0.1</span> sh</code><button class="copy-cmd" type="button" aria-label="Copy command"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>copy</span></button></div>
+            <div class="cap"><span class="n">2</span><h3>Install the collector</h3><span>single static binary &rarr; ~/.local/bin</span></div>
+            <div class="cmd-row"><span class="pmt">$</span><code>curl -sSfL <span class="acc">https://raw.githubusercontent.com/adithyan-ak/agenthound/main/install.sh</span> | sh</code><button class="copy-cmd" type="button" aria-label="Copy command"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>copy</span></button></div>
+            <div class="cmd-row"><span class="pmt">$</span><code>export <span class="acc">PATH="$HOME/.local/bin:$PATH"</span></code><button class="copy-cmd" type="button" aria-label="Copy command"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>copy</span></button></div>
           </div>
           <div class="cmd-step">
-            <div class="cap"><span class="n">3</span><h3>Add AgentHound to PATH and verify it</h3><span>the installer prints this reminder when needed</span></div>
-            <div class="cmd-row"><span class="pmt">$</span><code>export <span class="acc">PATH="$HOME/.local/bin:$PATH"</span> &amp;&amp; agenthound --version</code><button class="copy-cmd" type="button" aria-label="Copy command"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>copy</span></button></div>
+            <div class="cap"><span class="n">3</span><h3>Scan local configs and stream them in</h3><span>offline, read-only, raw credential values omitted</span></div>
+            <div class="cmd-row"><span class="pmt">$</span><code>agenthound scan <span class="acc">--config --output -</span> | curl <span class="acc">-sSf --data-binary @-</span> -H <span class="acc">"Content-Type: application/json"</span> http://127.0.0.1:8080/api/v1/ingest</code><button class="copy-cmd" type="button" aria-label="Copy command"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>copy</span></button></div>
           </div>
           <div class="cmd-step">
-            <div class="cap"><span class="n">4</span><h3>Scan and stream into the server</h3><span>offline, read-only collection piped to the local ingest API</span></div>
-            <div class="cmd-row"><span class="pmt">$</span><code>agenthound scan <span class="acc">--config --output -</span> | curl --data-binary @- -H <span class="acc">"Content-Type: application/json"</span> http://127.0.0.1:8080/api/v1/ingest</code><button class="copy-cmd" type="button" aria-label="Copy command"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>copy</span></button></div>
-          </div>
-          <div class="cmd-step">
-            <div class="cap"><span class="n">5</span><h3>Open the graph UI</h3><span>macOS or Linux</span></div>
+            <div class="cap"><span class="n">4</span><h3>Open the graph</h3><span>http://127.0.0.1:8080</span></div>
             <div class="cmd-row"><span class="pmt">$</span><code>(command -v open &gt;/dev/null &amp;&amp; open <span class="acc">http://127.0.0.1:8080</span>) || xdg-open <span class="acc">http://127.0.0.1:8080</span></code><button class="copy-cmd" type="button" aria-label="Copy command"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>copy</span></button></div>
           </div>
         </div>
