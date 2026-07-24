@@ -11,6 +11,12 @@ python3 -m http.server 8000
 # open http://localhost:8000
 ```
 
+## Verify
+
+```bash
+npx --yes html-validate index.html 404.html og-template.html
+```
+
 ## Deploy
 
 1. Push to `main` on the GitHub repo backing the site.
@@ -24,7 +30,9 @@ python3 -m http.server 8000
 ## Files
 
 - `index.html` - the page (HTML, CSS, JS inline)
-- `404.html` - fallback that redirects to `/`
+- `404.html` - crawl-safe not-found page with a route back home
+- `.htmlvalidate.json` - static HTML validation rules
+- `LICENSE` - Apache License 2.0
 - `og.png` - Open Graph / Twitter card (1200×630)
 - `og-template.html` - source for `og.png` (re-render with headless Chrome at 1200×630)
 - `robots.txt` - crawler rules + sitemap pointer
